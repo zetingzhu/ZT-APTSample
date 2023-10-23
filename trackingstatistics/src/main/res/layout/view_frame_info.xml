@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray"
+    android:padding="10dp">
+    <TextView
+        android:id="@+id/tv_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1234"/>
+    <TextView
+        android:id="@+id/tv_width"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1234"/>
+    <TextView
+        android:id="@+id/tv_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1234"/>
+    <TextView
+        android:id="@+id/tv_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1234"/>
+    <Button
+        android:id="@+id/btn_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭该窗口"/>
+
+</LinearLayout>

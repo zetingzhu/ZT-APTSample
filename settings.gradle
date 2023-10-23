@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ZT-APTSample"
 include ':app'
+include ':autotrackings'
+include ':trackingstatistics'
