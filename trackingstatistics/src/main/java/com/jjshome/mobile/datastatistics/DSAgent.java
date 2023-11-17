@@ -70,22 +70,24 @@ public class DSAgent {
 
     /**
      * 手机所安装应用程序
+     *
      * @param context
      */
-    public static void recordAppInfo(Context context){
-        if (hasUpLoad()){
+    public static void recordAppInfo(Context context) {
+        if (hasUpLoad()) {
             DSManager.getInstance().recordAppInfo(context);
         }
 
     }
-    private static boolean hasUpLoad(){
-        long lastUp=InfoSharedPref.getLastUpLoadAppTime();
-        long thisTime=System.currentTimeMillis();
-        if (lastUp==0){
+
+    private static boolean hasUpLoad() {
+        long lastUp = InfoSharedPref.getLastUpLoadAppTime();
+        long thisTime = System.currentTimeMillis();
+        if (lastUp == 0) {
             return true;
         }
-        long jiange=7*24*60*60*1000;
-        if (thisTime-lastUp>jiange){
+        long jiange = 7 * 24 * 60 * 60 * 1000;
+        if (thisTime - lastUp > jiange) {
             return true;
         }
         return false;
@@ -263,6 +265,7 @@ public class DSAgent {
      * @param view 点击的view
      */
     public static void onClickView(android.view.View view) {
+        System.out.println("ASM- 埋点：onClickView view：" + view);
         if (!DSManager.getInstance().isInit()) {//初始化成功
             DSManager.getInstance().init();
         }
@@ -301,9 +304,8 @@ public class DSAgent {
     }
 
 
-
-
     public static void onAdapterClickView(android.widget.AdapterView parent, android.view.View view, int position) {
+        System.out.println("ASM- 埋点：onAdapterClickView  parent:" + parent + " > view:" + view);
         if (!DSManager.getInstance().isInit()) {//初始化成功
             DSManager.getInstance().init();
         }

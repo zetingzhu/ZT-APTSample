@@ -14,8 +14,11 @@ import org.gradle.api.Project;
  * @date: 2023/10/23
  */
 public class TrackingPluginV2 implements Plugin<Project> {
+    private static final String TAG = "ASM-Plugin";
+
     @Override
     public void apply(Project target) {
+        System.out.println(TAG + ">>>>>> apply ");
         AndroidComponentsExtension comp = target.getExtensions().getByType(AndroidComponentsExtension.class);
         comp.onVariants(comp.selector().all(), new Action<Component>() {
             @Override

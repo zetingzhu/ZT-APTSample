@@ -4,9 +4,14 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+        maven {
+            url uri(new File(rootDir,'repo'))
+        }
+        maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "ZT-APTSample"
 include ':app'
 include ':autotrackings'
 include ':trackingstatistics'
+include ':commutil'

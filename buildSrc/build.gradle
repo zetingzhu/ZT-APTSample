@@ -1,0 +1,18 @@
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    //gradle sdk
+    implementation gradleApi()
+    //groovy sdk
+    implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:7.4.2'
+    compileOnly("org.ow2.asm:asm-commons:9.3")
+}
