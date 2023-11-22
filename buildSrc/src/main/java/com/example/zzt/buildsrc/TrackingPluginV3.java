@@ -18,13 +18,12 @@ public class TrackingPluginV3 implements Plugin<Project> {
 
     @Override
     public void apply(Project target) {
-        System.out.println(TAG + ">>>>>> apply ");
         AndroidComponentsExtension comp = target.getExtensions().getByType(AndroidComponentsExtension.class);
         comp.onVariants(comp.selector().all(), new Action<Component>() {
             @Override
             public void execute(Component variant) {
-                variant.transformClassesWith(TrackingFactoryV3.class, InstrumentationScope.ALL, v -> null);
-                variant.setAsmFramesComputationMode(FramesComputationMode.COMPUTE_FRAMES_FOR_INSTRUMENTED_METHODS);
+                variant.getInstrumentation().transformClassesWith(TrackingFactoryV3.class, InstrumentationScope.ALL, v -> null);
+                variant.getInstrumentation().setAsmFramesComputationMode(FramesComputationMode.COMPUTE_FRAMES_FOR_INSTRUMENTED_METHODS);
             }
         });
     }

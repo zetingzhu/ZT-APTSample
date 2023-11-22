@@ -21,7 +21,6 @@ public abstract class TrackingFactoryV3 implements AsmClassVisitorFactory<Instru
 
     @Override
     public ClassVisitor createClassVisitor(ClassContext classContext, ClassVisitor classVisitor) {
-//        return new TrackingClassNodeV3(classVisitor, classContext.getCurrentClassData().getClassName());
         return new InsertLogClassVisitor(classVisitor, classContext.getCurrentClassData().getClassName());
     }
 

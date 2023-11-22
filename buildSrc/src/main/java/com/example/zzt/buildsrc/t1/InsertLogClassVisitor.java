@@ -36,8 +36,6 @@ public class InsertLogClassVisitor extends ClassVisitor {
                 mv.visitInsn(Opcodes.POP);
             }
         };
-
         return newMethodVisitor;
     }
-
 }

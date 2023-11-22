@@ -1,6 +1,7 @@
 package com.zzt.zztapt.act
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zzt.adapter.StartActivityRecyclerAdapter
 import com.zzt.entity.StartActivityDao
 import com.zzt.zztapt.databinding.ActivityAptBinding
+import com.zzt.zztapt.twofa.TwoFAVerify
 
 class APTActivity : AppCompatActivity() {
     val TAG = "APTActivity"
@@ -23,11 +25,14 @@ class APTActivity : AppCompatActivity() {
 
         initView()
 
+
+        val twoFACode = TwoFAVerify.getInstance().twoFACode
+
+        Log.e(TAG, "验证码：" + twoFACode)
     }
 
 
     private fun initView() {
-
         val mListDialog: MutableList<StartActivityDao> = ArrayList()
         mListDialog.add(StartActivityDao("编译 Kotlin", " ", "1"))
         mListDialog.add(StartActivityDao("编译 Java", " ", "2"))

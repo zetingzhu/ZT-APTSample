@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TintViewBackgroundHelper">
+        <!-- support tint background color -->
+        <attr name="android:background"/>
+        <attr name="backgroundTint" />
+        <attr name="backgroundTintMode" />
+    </declare-styleable>
+
+    <declare-styleable name="TintTextHelper">
+        <attr name="android:textColor"/>
+        <attr name="android:textColorLink"/>
+        <attr name="android:textAppearance"/>
+    </declare-styleable>
+
+    <declare-styleable name="TintDrawableHelper">
+        <attr name="drawableTint" format="color" />
+        <attr name="drawableTintMode_new">
+            <enum name="src_over" value="3" />
+            <enum name="src_in" value="5" />
+            <enum name="src_atop" value="9" />
+            <enum name="multiply" value="14" />
+            <enum name="screen" value="15" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="TintImageHelper">
+        <attr name="android:src" />
+        <attr name="srcCompat" format="reference"/>
+        <attr name="tint" format="color" />
+        <attr name="imageTintMode">
+            <enum name="src_over" value="3" />
+            <enum name="src_in" value="5" />
+            <enum name="src_atop" value="9" />
+            <enum name="multiply" value="14" />
+            <enum name="screen" value="15" />
+        </attr>
+    </declare-styleable>
+
+    <!-- 切换主题是否   -->
+    <declare-styleable name="TintThemeSwitch">
+        <attr name="openThemeSwitch" format="boolean" />
+    </declare-styleable>
+</resources>
