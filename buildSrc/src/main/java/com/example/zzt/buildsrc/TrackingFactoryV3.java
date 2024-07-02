@@ -9,6 +9,8 @@ import com.example.zzt.buildsrc.t2.TimeCostClassVisitor;
 
 import org.objectweb.asm.ClassVisitor;
 
+import java.util.Arrays;
+
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 
 
@@ -21,7 +23,14 @@ public abstract class TrackingFactoryV3 implements AsmClassVisitorFactory<Instru
 
     @Override
     public ClassVisitor createClassVisitor(ClassContext classContext, ClassVisitor classVisitor) {
-        return new InsertLogClassVisitor(classVisitor, classContext.getCurrentClassData().getClassName());
+        System.out.println(TAG + ">>>>>> createClassVisitor 开始  classContext：" + classContext.getCurrentClassData().getClassName() + "  > classVisitor:" + classVisitor);
+
+        // 插入日志
+//        return new InsertLogClassVisitor(classVisitor, classContext.getCurrentClassData().getClassName());
+        // 插入开始结束时间
+        return new TimeCostClassVisitor(classVisitor, classContext.getCurrentClassData().getClassName());
+        // 各种点击事件
+//        return new TrackingClassNodeV3(classVisitor, classContext.getCurrentClassData().getClassName());
     }
 
 

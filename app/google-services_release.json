@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "323092438212",
+    "firebase_url": "https://xtrend-speed.firebaseio.com",
+    "project_id": "xtrend-speed",
+    "storage_bucket": "xtrend-speed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323092438212:android:0d7e29c41430362ef5fd91",
+        "android_client_info": {
+          "package_name": "com.rynatsa.xtrendspeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323092438212-gvn5h1o0pvn4st976a8fsdu0f8226a6q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4GOmuRqkW2nZy0L_Yl55qRkjUTEejhtw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323092438212-gvn5h1o0pvn4st976a8fsdu0f8226a6q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,5 @@
 package com.example.zzt.twofaverify.util;
 
-import com.example.zzt.twofaverify.util.TotpUtil;
 
 /**
  * @author: zeting

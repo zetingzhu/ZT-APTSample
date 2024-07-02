@@ -23,8 +23,8 @@ public class TrackingPluginV2 implements Plugin<Project> {
         comp.onVariants(comp.selector().all(), new Action<Component>() {
             @Override
             public void execute(Component variant) {
-                variant.transformClassesWith(TrackingFactoryV2.class, InstrumentationScope.ALL, v -> null);
-                variant.setAsmFramesComputationMode(FramesComputationMode.COMPUTE_FRAMES_FOR_INSTRUMENTED_METHODS);
+                variant.getInstrumentation().transformClassesWith(TrackingFactoryV2.class, InstrumentationScope.ALL, v -> null);
+                variant.getInstrumentation().setAsmFramesComputationMode(FramesComputationMode.COMPUTE_FRAMES_FOR_INSTRUMENTED_METHODS);
             }
         });
     }

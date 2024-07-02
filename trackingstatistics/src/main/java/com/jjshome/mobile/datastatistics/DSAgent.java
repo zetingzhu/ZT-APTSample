@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 
 //import com.bun.miitmdid.core.JLibrary;
 //import com.bun.miitmdid.core.MdidSdkHelper;
+import com.google.android.material.tabs.TabLayout;
 import com.jjshome.mobile.datastatistics.entity.EventID;
 import com.jjshome.mobile.datastatistics.entity.extra.DJ0001;
 import com.jjshome.mobile.datastatistics.marquee.FrameInfo;
@@ -303,6 +304,27 @@ public class DSAgent {
 
     }
 
+    public static void onClickTabLayout(TabLayout.Tab tab) {
+        System.out.println("ASM- 埋点：onClickTabLayout view：" + tab);
+        if (!DSManager.getInstance().isInit()) {//初始化成功
+            DSManager.getInstance().init();
+        }
+        if (tab == null) {
+            return;
+        }
+        View view = tab.getCustomView();
+        if (view == null) {
+            view = tab.view;
+        }
+        if (view == null) {
+            return;
+        }
+        if (!InfoSharedPref.isAutoTracking()) {
+            return;
+        }
+
+        viewRecordClick(view);
+    }
 
     public static void onAdapterClickView(android.widget.AdapterView parent, android.view.View view, int position) {
         System.out.println("ASM- 埋点：onAdapterClickView  parent:" + parent + " > view:" + view);

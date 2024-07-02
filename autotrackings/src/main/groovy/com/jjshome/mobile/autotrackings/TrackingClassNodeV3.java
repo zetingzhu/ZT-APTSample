@@ -24,6 +24,7 @@ import java.util.Map;
 public class TrackingClassNodeV3 extends ClassVisitor {
     private static final String TAG = "ASM-ClassNode";
     private static final String TAG_LAMBDA = "ASM-Lambda";
+    public static final Long Version = 20231117L;
 
     /**
      * 存储 Lambda 和方法对应字节码关系

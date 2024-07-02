@@ -6,7 +6,6 @@ plugins {
 
 // 使用自定义的 plugin
 import com.example.zzt.buildsrc.TrackingPluginV3
-
 apply plugin: TrackingPluginV3
 
 android {
@@ -19,6 +18,7 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-
+    implementation 'androidx.multidex:multidex:2.0.1'     // 使用AndroidX库版本
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.3.0'
@@ -54,4 +54,25 @@ dependencies {
 
 
     implementation 'com.github.zetingzhu:ZZTUtilCode:1.2.7'
+    implementation project(path: ':ASMLib')
 }
+
+
+task switchToDebug(type: Copy) {
+    description = 'Switches to DEBUG google-services_debug.json'
+    from "."
+    include "google-services_debug.json"
+    into "."
+    rename "google-services_debug.json", "google-services.json"
+}
+
+task switchToRelease(type: Copy) {
+    description = 'Switches to RELEASE google-services_debug.json'
+    from "."
+    include "google-services_release.json"
+    into "."
+    rename "google-services_release.json", "google-services.json"
+}
+
+tasks.preBuild.dependsOn switchToDebug
+// tasks.preBuild.dependsOn switchToRelease

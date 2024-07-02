@@ -31,7 +31,7 @@ public class ActTestJava1 extends AppCompatActivity {
         otherClick = new OnDialogViewClickListener() {
             @Override
             public void onClickA(Activity act, View v) {
-                System.out.println("点击事件传递");
+                System.out.println("ASM 点击事件传递");
             }
         };
         button7.setOnClickListener(v -> otherClick.onClickA(ActTestJava1.this, v));

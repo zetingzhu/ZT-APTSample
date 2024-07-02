@@ -1,4 +1,4 @@
-package com.example.zzt.buildsrc.t2;
+package com.asm.build.t2;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,16 +14,16 @@ public class TimeCache {
 
     public static void putEndTime(String methodName, String className) {
         mEndTimes.put(methodName + "," + className, System.currentTimeMillis());
-        printlnTime(methodName,className);
+        printlnTime(methodName, className);
     }
 
-    public static void printlnTime(String methodName,String className) {
+    public static void printlnTime(String methodName, String className) {
         String key = methodName + "," + className;
         if (!mStartTimes.containsKey(key) || !mEndTimes.containsKey(key)) {
-            System.out.println("className =" + key + "not exist");
+            System.out.println("ASM className =" + key + "not exist");
         }
         long currTime = mEndTimes.get(key) - mStartTimes.get(key);
-        System.out.println("className =" + className +" methodName =" + methodName + "，time consuming " + currTime + "  ms");
+        System.out.println("ASM className =" + className + " methodName =" + methodName + "，time consuming " + currTime + "  ms");
     }
 }
 

@@ -12,6 +12,7 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.TypePath;
 import org.objectweb.asm.commons.AdviceAdapter;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import java.util.Map;
 public class TrackingClassNodeV3 extends ClassVisitor {
     private static final String TAG = "ASM-ClassNode";
     private static final String TAG_LAMBDA = "ASM-Lambda";
+    public static final Long Version = 20240702L;
 
     // 解析类名字
     private String className;
@@ -30,6 +32,8 @@ public class TrackingClassNodeV3 extends ClassVisitor {
      * 存储 Lambda 和方法对应字节码关系
      */
     private Map<String, AnalyticsMethodObj> mLambdaMethodCells = new HashMap<>();
+
+    private AdviceAdapter newMethodVisitor;
 
     public TrackingClassNodeV3(ClassVisitor visitor, String className) {
         super(Opcodes.ASM7, visitor);
@@ -59,9 +63,9 @@ public class TrackingClassNodeV3 extends ClassVisitor {
      */
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-//        System.out.println(TAG + ">>>>>> visitMethod  access:" + access + " name:" + name + " descriptor:" + descriptor + " signature:" + signature + " exceptions:" + Arrays.toString(exceptions));
+        System.out.println(TAG + ">>>>>> visitMethod  access:" + access + " name:" + name + " descriptor:" + descriptor + " signature:" + signature + " exceptions:" + Arrays.toString(exceptions));
         MethodVisitor methodVisitor = super.visitMethod(access, name, descriptor, signature, exceptions);
-        AdviceAdapter newMethodVisitor = new AdviceAdapter(Opcodes.ASM7, methodVisitor, access, name, descriptor) {
+        newMethodVisitor = new AdviceAdapter(Opcodes.ASM7, methodVisitor, access, name, descriptor) {
             /**
              * lambda表达式和方法 使用
              * @param name the method's name.
@@ -127,6 +131,7 @@ public class TrackingClassNodeV3 extends ClassVisitor {
                 addItemClickEvent(methodVisitor, access, name, descriptor, signature, exceptions);
                 addSwitchCompatClickEvent(methodVisitor, access, name, descriptor, signature, exceptions);
                 addRadioGroupCompatClickEvent(methodVisitor, access, name, descriptor, signature, exceptions);
+                addTabLayoutClickEvent(methodVisitor, access, name, descriptor, signature, exceptions);
 
                 addLambdaMethod(methodVisitor, access, name, descriptor, signature, exceptions);
                 super.onMethodEnter();
@@ -238,6 +243,16 @@ public class TrackingClassNodeV3 extends ClassVisitor {
         }
     }
 
+
+    /**
+     * Tablayout 选中事件
+     */
+    public void addTabLayoutClickEvent(MethodVisitor mv, int access, String name, String descriptor, String signature, String[] exceptions) {
+        if ("onTabSelected".equals(name) && "(Lcom/google/android/material/tabs/TabLayout$Tab;)V".equals(descriptor)) {
+            handleViewTabLayoutEventClick(name, mv);
+        }
+    }
+
     /**
      * view点击事件处理
      *
@@ -266,6 +281,15 @@ public class TrackingClassNodeV3 extends ClassVisitor {
         mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/jjshome/mobile/datastatistics/DSAgent", "onAdapterClickView", "(Landroid/widget/AdapterView;Landroid/view/View;I)V", false);
     }
 
+    /**
+     * tablayout 点击事件
+     */
+    void handleViewTabLayoutEventClick(String name, MethodVisitor mv) {
+        System.err.println(TAG + ">>>>>> add 1 > className:" + className + " > name:" + name);
+
+        mv.visitVarInsn(Opcodes.ALOAD, 1);
+        mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/jjshome/mobile/datastatistics/DSAgent", "onClickTabLayout", "(Lcom/google/android/material/tabs/TabLayout$Tab;)V", false);
+    }
 
     /**
      * 获取参数类型

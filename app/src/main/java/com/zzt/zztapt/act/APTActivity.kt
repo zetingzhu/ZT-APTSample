@@ -38,6 +38,7 @@ class APTActivity : AppCompatActivity() {
         mListDialog.add(StartActivityDao("编译 Java", " ", "2"))
         mListDialog.add(StartActivityDao("Java", "点击事件对比", "3"))
         mListDialog.add(StartActivityDao("Java", "点击事件传递分析", "4"))
+        mListDialog.add(StartActivityDao("TagLayout", "TagLayout点击事件", "5"))
 
         StartActivityRecyclerAdapter.setAdapterData(
             binding.rvList,
@@ -59,6 +60,10 @@ class APTActivity : AppCompatActivity() {
 
                 "4" -> {
                     ActTestJava1.start(this@APTActivity)
+                }
+
+                "5" -> {
+                    ActTabLayout.start(this@APTActivity)
                 }
             }
         }

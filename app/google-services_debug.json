@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "655759993",
+    "project_id": "xtrend-speed-test-b470b",
+    "storage_bucket": "xtrend-speed-test-b470b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655759993:android:f71d8402b5a01755b912a8",
+        "android_client_info": {
+          "package_name": "com.rynatsa.xtrendspeed_debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655759993-07igh0h1qqmijlj6tjn5ok1h9mcmjrgg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhC_a-zuuUOO-cM65eG2zklqVL7tRrx04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655759993-07igh0h1qqmijlj6tjn5ok1h9mcmjrgg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "655759993-7vd50b3od70d0aqqg6iecfd13a7oljkl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bravely.XTrendSpeed"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

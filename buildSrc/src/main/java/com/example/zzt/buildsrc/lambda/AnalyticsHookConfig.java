@@ -64,6 +64,17 @@ public class AnalyticsHookConfig {
                         Arrays.asList(Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD)
                 )
         );
+        addLambdaMethod(
+                new AnalyticsMethodObj(
+                        "onTabSelected",
+                        "(Landroid/support/design/widget/TabLayout$Tab;)V",
+                        "android/support/design/widget/TabLayout$OnTabSelectedListener",
+                        "trackTabLayoutSelected",
+                        "(Ljava/lang/Object;Ljava/lang/Object;)V",
+                        0, 2,
+                        Arrays.asList(Opcodes.ALOAD, Opcodes.ALOAD)
+                )
+        );
     }
 
     private static void addLambdaMethod(AnalyticsMethodObj sensorsAnalyticsMethodCell) {
