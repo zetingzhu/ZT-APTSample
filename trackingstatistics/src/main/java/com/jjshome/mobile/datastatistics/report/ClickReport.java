@@ -12,9 +12,9 @@ import java.util.Map;
  * wq@jjshome.com
  */
 public class ClickReport implements IReport {
-    private EventInfo mEventInfo;
-    private String pid;
-    private String dtoken;
+    private final EventInfo mEventInfo;
+    private final String pid;
+    private final String dtoken;
 
     public ClickReport(EventInfo errorInfo, String pid, String dtoken) {
         mEventInfo = errorInfo;

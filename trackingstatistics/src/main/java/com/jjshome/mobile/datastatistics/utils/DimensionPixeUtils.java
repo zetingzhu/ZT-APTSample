@@ -40,12 +40,9 @@ public class DimensionPixeUtils {
      * @return
      */
     public static boolean hasNotchScreen(Activity activity) {
-        if (getInt("ro.miui.notch", activity) == 1 || hasNotchAtHuawei(activity) || hasNotchAtOPPO(activity)
-                || hasNotchAtVivo(activity)) { //TODO 各种品牌
-            return true;
-        }
-
-        return false;
+        //TODO 各种品牌
+        return getInt("ro.miui.notch", activity) == 1 || hasNotchAtHuawei(activity) || hasNotchAtOPPO(activity)
+                || hasNotchAtVivo(activity);
     }
 
     /**
@@ -69,8 +66,8 @@ public class DimensionPixeUtils {
                 Method getInt = SystemProperties.getMethod("getInt", paramTypes);
                 //参数
                 Object[] params = new Object[2];
-                params[0] = new String(key);
-                params[1] = new Integer(0);
+                params[0] = key;
+                params[1] = Integer.valueOf(0);
                 result = (Integer) getInt.invoke(SystemProperties, params);
 
             } catch (ClassNotFoundException e) {

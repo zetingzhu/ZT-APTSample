@@ -11,15 +11,15 @@ import com.jjshome.mobile.datastatistics.R;
 
 public class FrameInfoView extends FrameLayout {
 
-    private TextView mPathTextView;
+    private final TextView mPathTextView;
 
-    private TextView mWidthTextView;
+    private final TextView mWidthTextView;
 
-    private TextView mHeightTextView;
+    private final TextView mHeightTextView;
 
-    private TextView mListTextView;
+    private final TextView mListTextView;
 
-    private Button mCloseButton;
+    private final Button mCloseButton;
 
     public FrameInfoView(@NonNull Context context) {
         super(context);

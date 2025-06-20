@@ -118,7 +118,7 @@ public final class SDCardUtils {
         for (SDCardInfo cardInfo : sdCardInfo) {
             String state = cardInfo.state;
             if (state == null) continue;
-            if ("mounted".equals(state.toLowerCase())) {
+            if ("mounted".equalsIgnoreCase(state)) {
                 path.add(cardInfo.path);
             }
         }
@@ -164,11 +164,11 @@ public final class SDCardUtils {
 
     public static class SDCardInfo {
 
-        private String  path;
-        private String  state;
-        private boolean isRemovable;
-        private long    totalSize;
-        private long    availableSize;
+        private final String  path;
+        private final String  state;
+        private final boolean isRemovable;
+        private final long    totalSize;
+        private final long    availableSize;
 
         SDCardInfo(String path, String state, boolean isRemovable) {
             this.path = path;

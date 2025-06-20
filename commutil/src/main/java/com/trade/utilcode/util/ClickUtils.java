@@ -434,8 +434,8 @@ public class ClickUtils {
             return UtilsBridge.isValid(view, duration);
         }
 
-        private long    mDuration;
-        private boolean mIsGlobal;
+        private final long    mDuration;
+        private final boolean mIsGlobal;
 
         public OnDebouncingClickListener() {
             this(true, DEBOUNCING_DEFAULT_VALUE);

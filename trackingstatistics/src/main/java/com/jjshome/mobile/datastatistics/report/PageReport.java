@@ -14,9 +14,9 @@ import java.util.Map;
  * wq@jjshome.com
  */
 public class PageReport implements IReport {
-    private PageInfo mPageInfo;
-    private String ref;
-    private String dtoken;
+    private final PageInfo mPageInfo;
+    private final String ref;
+    private final String dtoken;
 
     public PageReport(PageInfo pageInfo, String ref, String dtoken) {
         mPageInfo = pageInfo;

@@ -80,7 +80,7 @@ public final class Utils {
 
     public abstract static class Task<Result> extends ThreadUtils.SimpleTask<Result> {
 
-        private Consumer<Result> mConsumer;
+        private final Consumer<Result> mConsumer;
 
         public Task(final Consumer<Result> consumer) {
             mConsumer = consumer;

@@ -40,7 +40,7 @@ public final class TintManager {
 
     private final Object mDrawableCacheLock = new Object();
 
-    private WeakReference<Context> mContextRef;
+    private final WeakReference<Context> mContextRef;
     private SparseArray<ColorStateList> mCacheTintList;
     private SparseArray<WeakReference<Drawable.ConstantState>> mCacheDrawables;
     private SparseArray<String> mSkipDrawableIdTags;

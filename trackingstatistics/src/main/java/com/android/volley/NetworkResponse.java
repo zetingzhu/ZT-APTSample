@@ -84,7 +84,7 @@ public class NetworkResponse {
     public NetworkResponse(byte[] data) {
         this(HttpURLConnection.HTTP_OK, data,
                 /* notModified= */ false,
-                /* networkTimeMs= */ 0, Collections.<Header>emptyList());
+                /* networkTimeMs= */ 0, Collections.emptyList());
     }
 
     /**

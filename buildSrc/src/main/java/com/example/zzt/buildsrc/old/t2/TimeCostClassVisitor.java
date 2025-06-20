@@ -1,4 +1,4 @@
-package com.example.zzt.buildsrc.t2;
+package com.example.zzt.buildsrc.old.t2;
 
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class TimeCostClassVisitor extends ClassVisitor {
     private static final String TAG = "ASM-buildSrc-TimeCost";
-    private String className;
+    private final String className;
 
     public TimeCostClassVisitor(ClassVisitor classVisitor, String className) {
         super(Opcodes.ASM7, classVisitor);

@@ -88,10 +88,7 @@ public class DSAgent {
             return true;
         }
         long jiange = 7 * 24 * 60 * 60 * 1000;
-        if (thisTime - lastUp > jiange) {
-            return true;
-        }
-        return false;
+        return thisTime - lastUp > jiange;
     }
 
     /**

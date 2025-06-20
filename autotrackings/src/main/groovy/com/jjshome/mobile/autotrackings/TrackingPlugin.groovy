@@ -12,7 +12,7 @@ import org.gradle.api.Project
 /**
  * WQ on 2018/12/11
  * wq@jjshome.com*/
-public class TrackingPlugin extends Transform implements Plugin<Project> {
+class TrackingPlugin extends Transform implements Plugin<Project> {
     @Override
     void apply(Project project) {
         def android = project.extensions.getByType(AppExtension)

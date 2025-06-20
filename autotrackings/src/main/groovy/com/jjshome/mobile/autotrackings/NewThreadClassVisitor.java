@@ -34,7 +34,7 @@ public class NewThreadClassVisitor extends ClassNode {
 
     private static final String CONSTRUCTOR_METHOD = "<init>";
 
-    private ClassVisitor classVisitor;
+    private final ClassVisitor classVisitor;
 
     private static final String HANDLER_CLASS_NAME = "com/barran/example/asmtest/AsmHandler";
     private static final String HANDLER_METHOD_NAME = "handleNewThread";
@@ -64,8 +64,7 @@ public class NewThreadClassVisitor extends ClassNode {
         ListIterator<AbstractInsnNode> iterator = insnList.iterator();
         while (iterator.hasNext()) {
             AbstractInsnNode insnNode = iterator.next();
-            if (insnNode instanceof MethodInsnNode) {
-                MethodInsnNode methodInsn = (MethodInsnNode) insnNode;
+            if (insnNode instanceof MethodInsnNode methodInsn) {
                 if (checkIsTargetInvoke(methodInsn)) {
 
                     System.out.println(TAG + "handleMethod class: " + name + ",method=" + methodNode.name + ", desc=" + methodNode.desc);
@@ -95,8 +94,7 @@ public class NewThreadClassVisitor extends ClassNode {
                 && CONSTRUCTOR_METHOD.equals(methodInsn.name));
         if (isTarget) {
             AbstractInsnNode next = methodInsn.getNext();
-            if (next instanceof FieldInsnNode && next.getOpcode() == Opcodes.PUTFIELD) {
-                FieldInsnNode fieldNode = (FieldInsnNode) next;
+            if (next instanceof FieldInsnNode fieldNode && next.getOpcode() == Opcodes.PUTFIELD) {
                 if (THRED_TYPE_DESC.equals(fieldNode.desc)) {
                     System.out.println(TAG + "checkIsTargetInvoke ignore: next is PUTFIELD: name=" + fieldNode.name + ",desc=" + fieldNode.desc);
                     return false;
@@ -111,8 +109,7 @@ public class NewThreadClassVisitor extends ClassNode {
                     if (next.getOpcode() >= Opcodes.IRETURN && next.getOpcode() <= Opcodes.RETURN) {
                         break;
                     }
-                    if (next instanceof MethodInsnNode) {
-                        MethodInsnNode node = (MethodInsnNode) next;
+                    if (next instanceof MethodInsnNode node) {
                         if (THRED_CLASS_NAME.equals(node.owner) && START_METHOD_NAME.equals(node.name)) {
                             callStart = true;
                             break;
@@ -253,17 +250,15 @@ public class NewThreadClassVisitor extends ClassNode {
         }
         System.out.println(TAG + "next:remove insn");
 //        System.out.println("    next: op=" + next.getOpcode() + ", type=" + next.getType() + ",insn=" + next);
-        if (next instanceof MethodInsnNode) {
+        if (next instanceof MethodInsnNode method) {
             // new xxx().start()
-            MethodInsnNode method = (MethodInsnNode) next;
             if (method.getOpcode() == Opcodes.INVOKEVIRTUAL && THRED_CLASS_NAME.equals(method.owner)) {
                 removeList.add(method);
             }
-        } else if (next instanceof VarInsnNode && next.getOpcode() == Opcodes.ASTORE) {
+        } else if (next instanceof VarInsnNode var && next.getOpcode() == Opcodes.ASTORE) {
             // xxx = new XXX
             // xxx.start()
             removeList.add(next);
-            VarInsnNode var = (VarInsnNode) next;
             int operand = var.var;
 
             next = next.getNext();
@@ -378,7 +373,7 @@ public class NewThreadClassVisitor extends ClassNode {
                     }
             }
         }
-        System.out.println("parseParam " + funcArgs.toString());
+        System.out.println("parseParam " + funcArgs);
         return funcArgs;
     }
 

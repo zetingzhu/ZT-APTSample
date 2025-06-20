@@ -166,7 +166,7 @@ public final class SpanUtils {
     private int spaceSize;
     private int spaceColor;
 
-    private SerializableSpannableStringBuilder mBuilder;
+    private final SerializableSpannableStringBuilder mBuilder;
     private boolean                            isCreated;
 
     private       int mType;
@@ -1456,7 +1456,7 @@ public final class SpanUtils {
     }
 
     static class ShaderSpan extends CharacterStyle implements UpdateAppearance {
-        private Shader mShader;
+        private final Shader mShader;
 
         private ShaderSpan(final Shader shader) {
             this.mShader = shader;
@@ -1469,9 +1469,10 @@ public final class SpanUtils {
     }
 
     static class ShadowSpan extends CharacterStyle implements UpdateAppearance {
-        private float radius;
-        private float dx, dy;
-        private int shadowColor;
+        private final float radius;
+        private final float dx;
+        private final float dy;
+        private final int shadowColor;
 
         private ShadowSpan(final float radius,
                            final float dx,

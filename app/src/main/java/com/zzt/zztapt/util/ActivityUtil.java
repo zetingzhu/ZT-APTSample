@@ -103,9 +103,7 @@ public class ActivityUtil  {
     }
 
     public static boolean isActivityRunning(Activity activity) {
-        if (activity == null || activity.isFinishing() || Build.VERSION.SDK_INT >= 17 && activity.isDestroyed())
-            return false;
-        return true;
+        return activity != null && !activity.isFinishing() && (Build.VERSION.SDK_INT < 17 || !activity.isDestroyed());
     }
 
     public static boolean isActivity(Context context) {

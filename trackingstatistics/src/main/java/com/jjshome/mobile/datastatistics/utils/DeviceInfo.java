@@ -30,6 +30,7 @@ import java.io.Writer;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
@@ -226,7 +227,7 @@ public class DeviceInfo {
                          enumIpAddr.hasMoreElements(); ) {
                         InetAddress inetAddress = enumIpAddr.nextElement();
                         if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
-                            return inetAddress.getHostAddress().toString();
+                            return inetAddress.getHostAddress();
                         }
                     }
                 }
@@ -303,7 +304,7 @@ public class DeviceInfo {
         String androidId = "";
         try {
 
-            androidId = "" + android.provider.Settings.Secure.getString(context.getContentResolver(),
+            androidId = android.provider.Settings.Secure.getString(context.getContentResolver(),
                     android.provider.Settings.Secure.ANDROID_ID);
 
         } catch (Exception e) {
@@ -323,13 +324,13 @@ public class DeviceInfo {
         try {
             final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             final String tmDevice, tmSerial, androidId;
-            tmDevice = "" + tm.getDeviceId();
-            tmSerial = "" + tm.getSimSerialNumber();
-            androidId = "" + android.provider.Settings.Secure.getString(context.getContentResolver(),
+            tmDevice = tm.getDeviceId();
+            tmSerial = tm.getSimSerialNumber();
+            androidId = android.provider.Settings.Secure.getString(context.getContentResolver(),
                     android.provider.Settings.Secure.ANDROID_ID);
             UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
             String uniqueId = deviceUuid.toString();
-            String array[] = uniqueId.split("-");
+            String[] array = uniqueId.split("-");
             StringBuffer sb = new StringBuffer();
             for (String temp : array) {
                 sb.append(temp);
@@ -489,7 +490,7 @@ public class DeviceInfo {
 
             char[] crunchifyBuffer = new char[2048];
             try {
-                Reader crunchifyReader = new BufferedReader(new InputStreamReader(crunchifyStream, "UTF-8"));
+                Reader crunchifyReader = new BufferedReader(new InputStreamReader(crunchifyStream, StandardCharsets.UTF_8));
                 int counter;
                 while ((counter = crunchifyReader.read(crunchifyBuffer)) != -1) {
                     crunchifyWriter.write(crunchifyBuffer, 0, counter);

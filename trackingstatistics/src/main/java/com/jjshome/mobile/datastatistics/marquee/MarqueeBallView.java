@@ -32,7 +32,7 @@ import com.jjshome.mobile.datastatistics.utils.ViewUtil;
  */
 public class MarqueeBallView extends AppCompatImageView implements View.OnClickListener {
 
-    private Context context;
+    private final Context context;
 
     private float mLastX;
 
@@ -46,11 +46,11 @@ public class MarqueeBallView extends AppCompatImageView implements View.OnClickL
 
     private final WindowManager mWm;
 
-    private RedFrameContainerView mRedFrameContainerView;
+    private final RedFrameContainerView mRedFrameContainerView;
 
     private FrameInfo mFrameInfo;
 
-    private FrameInfoView mFrameInfoView;
+    private final FrameInfoView mFrameInfoView;
 
     private String workerId;
 

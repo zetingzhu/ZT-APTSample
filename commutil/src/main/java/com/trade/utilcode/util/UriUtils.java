@@ -161,7 +161,7 @@ public final class UriUtils {
                     file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
                             + path.replace(external, "/"));
                     if (file.exists()) {
-                        Log.d("UriUtils", uri.toString() + " -> " + external);
+                        Log.d("UriUtils", uri + " -> " + external);
                         return file;
                     }
                 }
@@ -181,13 +181,13 @@ public final class UriUtils {
                         + path.replace("/external_cache_path/", "/"));
             }
             if (file != null && file.exists()) {
-                Log.d("UriUtils", uri.toString() + " -> " + path);
+                Log.d("UriUtils", uri + " -> " + path);
                 return file;
             }
         }
         if (ContentResolver.SCHEME_FILE.equals(scheme)) {
             if (path != null) return new File(path);
-            Log.d("UriUtils", uri.toString() + " parse failed. -> 0");
+            Log.d("UriUtils", uri + " parse failed. -> 0");
             return null;
         }// end 0
         else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
@@ -237,16 +237,16 @@ public final class UriUtils {
                             }
                         }
                     } catch (Exception ex) {
-                        Log.d("UriUtils", uri.toString() + " parse failed. " + ex.toString() + " -> 1_0");
+                        Log.d("UriUtils", uri + " parse failed. " + ex + " -> 1_0");
                     }
                 }
-                Log.d("UriUtils", uri.toString() + " parse failed. -> 1_0");
+                Log.d("UriUtils", uri + " parse failed. -> 1_0");
                 return null;
             }// end 1_0
             else if ("com.android.providers.downloads.documents".equals(authority)) {
                 String id = DocumentsContract.getDocumentId(uri);
                 if (TextUtils.isEmpty(id)) {
-                    Log.d("UriUtils", uri.toString() + " parse failed(id is null). -> 1_1");
+                    Log.d("UriUtils", uri + " parse failed(id is null). -> 1_1");
                     return null;
                 }
                 if (id.startsWith("raw:")) {
@@ -279,7 +279,7 @@ public final class UriUtils {
                     }
                 }
 
-                Log.d("UriUtils", uri.toString() + " parse failed. -> 1_1");
+                Log.d("UriUtils", uri + " parse failed. -> 1_1");
                 return null;
             }// end 1_1
             else if ("com.android.providers.media.documents".equals(authority)) {
@@ -294,7 +294,7 @@ public final class UriUtils {
                 } else if ("audio".equals(type)) {
                     contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
                 } else {
-                    Log.d("UriUtils", uri.toString() + " parse failed. -> 1_2");
+                    Log.d("UriUtils", uri + " parse failed. -> 1_2");
                     return null;
                 }
                 final String selection = "_id=?";
@@ -305,7 +305,7 @@ public final class UriUtils {
                 return getFileFromUri(uri, "1_3");
             }// end 1_3
             else {
-                Log.d("UriUtils", uri.toString() + " parse failed. -> 1_4");
+                Log.d("UriUtils", uri + " parse failed. -> 1_4");
                 return null;
             }// end 1_4
         }// end 1
@@ -313,7 +313,7 @@ public final class UriUtils {
             return getFileFromUri(uri, "2");
         }// end 2
         else {
-            Log.d("UriUtils", uri.toString() + " parse failed. -> 3");
+            Log.d("UriUtils", uri + " parse failed. -> 3");
             return null;
         }// end 3
     }
@@ -334,7 +334,7 @@ public final class UriUtils {
             String path = uri.getPath();
             if (!TextUtils.isEmpty(path)) {
                 File fileDir = Environment.getExternalStorageDirectory();
-                return new File(fileDir, path.substring("/QQBrowser".length(), path.length()));
+                return new File(fileDir, path.substring("/QQBrowser".length()));
             }
         } else if ("com.huawei.hidisk.fileprovider".equals(uri.getAuthority())) {
             String path = uri.getPath();
@@ -346,7 +346,7 @@ public final class UriUtils {
         final Cursor cursor = Utils.getApp().getContentResolver().query(
                 uri, new String[]{"_data"}, selection, selectionArgs, null);
         if (cursor == null) {
-            Log.d("UriUtils", uri.toString() + " parse failed(cursor is null). -> " + code);
+            Log.d("UriUtils", uri + " parse failed(cursor is null). -> " + code);
             return null;
         }
         try {
@@ -355,15 +355,15 @@ public final class UriUtils {
                 if (columnIndex > -1) {
                     return new File(cursor.getString(columnIndex));
                 } else {
-                    Log.d("UriUtils", uri.toString() + " parse failed(columnIndex: " + columnIndex + " is wrong). -> " + code);
+                    Log.d("UriUtils", uri + " parse failed(columnIndex: " + columnIndex + " is wrong). -> " + code);
                     return null;
                 }
             } else {
-                Log.d("UriUtils", uri.toString() + " parse failed(moveToFirst return false). -> " + code);
+                Log.d("UriUtils", uri + " parse failed(moveToFirst return false). -> " + code);
                 return null;
             }
         } catch (Exception e) {
-            Log.d("UriUtils", uri.toString() + " parse failed. -> " + code);
+            Log.d("UriUtils", uri + " parse failed. -> " + code);
             return null;
         } finally {
             cursor.close();

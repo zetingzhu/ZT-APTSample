@@ -60,17 +60,15 @@ public final class CollectionUtils {
     @SafeVarargs
     public static <E> ArrayList<E> newArrayList(E... array) {
         ArrayList<E> list = new ArrayList<>();
-        if (array == null || array.length == 0) return list;
-        for (E e : array) {
-            list.add(e);
-        }
+        if (array == null) return list;
+        Collections.addAll(list, array);
         return list;
     }
 
     @SafeVarargs
     public static <E> ArrayList<E> newArrayListNotNull(E... array) {
         ArrayList<E> list = new ArrayList<>();
-        if (array == null || array.length == 0) return list;
+        if (array == null) return list;
         for (E e : array) {
             if (e == null) continue;
             list.add(e);
@@ -81,17 +79,15 @@ public final class CollectionUtils {
     @SafeVarargs
     public static <E> LinkedList<E> newLinkedList(E... array) {
         LinkedList<E> list = new LinkedList<>();
-        if (array == null || array.length == 0) return list;
-        for (E e : array) {
-            list.add(e);
-        }
+        if (array == null) return list;
+        Collections.addAll(list, array);
         return list;
     }
 
     @SafeVarargs
     public static <E> LinkedList<E> newLinkedListNotNull(E... array) {
         LinkedList<E> list = new LinkedList<>();
-        if (array == null || array.length == 0) return list;
+        if (array == null) return list;
         for (E e : array) {
             if (e == null) continue;
             list.add(e);
@@ -102,17 +98,15 @@ public final class CollectionUtils {
     @SafeVarargs
     public static <E> HashSet<E> newHashSet(E... array) {
         HashSet<E> set = new HashSet<>();
-        if (array == null || array.length == 0) return set;
-        for (E e : array) {
-            set.add(e);
-        }
+        if (array == null) return set;
+        Collections.addAll(set, array);
         return set;
     }
 
     @SafeVarargs
     public static <E> HashSet<E> newHashSetNotNull(E... array) {
         HashSet<E> set = new HashSet<>();
-        if (array == null || array.length == 0) return set;
+        if (array == null) return set;
         for (E e : array) {
             if (e == null) continue;
             set.add(e);
@@ -123,17 +117,15 @@ public final class CollectionUtils {
     @SafeVarargs
     public static <E> TreeSet<E> newTreeSet(Comparator<E> comparator, E... array) {
         TreeSet<E> set = new TreeSet<>(comparator);
-        if (array == null || array.length == 0) return set;
-        for (E e : array) {
-            set.add(e);
-        }
+        if (array == null) return set;
+        Collections.addAll(set, array);
         return set;
     }
 
     @SafeVarargs
     public static <E> TreeSet<E> newTreeSetNotNull(Comparator<E> comparator, E... array) {
         TreeSet<E> set = new TreeSet<>(comparator);
-        if (array == null || array.length == 0) return set;
+        if (array == null) return set;
         for (E e : array) {
             if (e == null) continue;
             set.add(e);

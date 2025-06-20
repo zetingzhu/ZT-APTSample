@@ -14,7 +14,7 @@ import java.util.List;
 
 public class RedFrameContainerView extends FrameLayout {
 
-    private Rect mRect;
+    private final Rect mRect;
 
 
     public RedFrameContainerView(Context context) {

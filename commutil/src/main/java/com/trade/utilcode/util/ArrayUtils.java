@@ -1681,7 +1681,7 @@ public class ArrayUtils {
         }
         final Long[] result = new Long[array.length];
         for (int i = 0; i < array.length; i++) {
-            result[i] = new Long(array[i]);
+            result[i] = Long.valueOf(array[i]);
         }
         return result;
     }
@@ -1728,7 +1728,7 @@ public class ArrayUtils {
         }
         final Integer[] result = new Integer[array.length];
         for (int i = 0; i < array.length; i++) {
-            result[i] = new Integer(array[i]);
+            result[i] = Integer.valueOf(array[i]);
         }
         return result;
     }
@@ -1775,7 +1775,7 @@ public class ArrayUtils {
         }
         final Short[] result = new Short[array.length];
         for (int i = 0; i < array.length; i++) {
-            result[i] = new Short(array[i]);
+            result[i] = Short.valueOf(array[i]);
         }
         return result;
     }
@@ -1822,7 +1822,7 @@ public class ArrayUtils {
         }
         final Byte[] result = new Byte[array.length];
         for (int i = 0; i < array.length; i++) {
-            result[i] = new Byte(array[i]);
+            result[i] = Byte.valueOf(array[i]);
         }
         return result;
     }

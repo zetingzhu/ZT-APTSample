@@ -703,7 +703,7 @@ public final class AppUtils {
         ArrayList<String> result = new ArrayList<>();
         if (UtilsBridge.isSpace(packageName)) return result;
         Signature[] signatures = getAppSignatures(packageName);
-        if (signatures == null || signatures.length <= 0) return result;
+        if (signatures == null) return result;
         for (Signature signature : signatures) {
             String hash = UtilsBridge.bytes2HexString(UtilsBridge.hashTemplate(signature.toByteArray(), algorithm))
                     .replaceAll("(?<=[0-9A-F]{2})[0-9A-F]{2}", ":$0");

@@ -20,7 +20,7 @@ public abstract class TrackingFactoryV2 implements AsmClassVisitorFactory<Instru
     @Override
     public ClassVisitor createClassVisitor(ClassContext classContext, ClassVisitor classVisitor) {
 
-        System.out.println(TAG + " classContext:" + classContext.getCurrentClassData().toString());
+        System.out.println(TAG + " classContext:" + classContext.getCurrentClassData());
         System.out.println(TAG + " classVisitor:" + classVisitor.toString());
 
         // 方法中间插入埋点
@@ -34,9 +34,6 @@ public abstract class TrackingFactoryV2 implements AsmClassVisitorFactory<Instru
     @Override
     public boolean isInstrumentable(@NotNull ClassData classData) {
         String className = classData.getClassName();
-        if (className.startsWith("com.zzt.zztapt.")) {
-            return true;
-        }
-        return false;
+        return className.startsWith("com.zzt.zztapt.");
     }
 }

@@ -22,7 +22,7 @@ import java.util.List;
 public class RvAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
     List<String> mList = new ArrayList<>();
 
-    private
+    private final
     RvItemOnClickListener itemClick;
 
     public RvAdapter(List<String> mList, RvItemOnClickListener itemClick) {

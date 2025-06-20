@@ -24,6 +24,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.math.BigInteger;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -92,10 +93,10 @@ public class Common {
      */
     public static String MD5Operation(String info) {
         try {
-            byte strTemp[] = info.getBytes();
+            byte[] strTemp = info.getBytes();
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(strTemp);
-            byte b[] = md.digest();
+            byte[] b = md.digest();
 
             BigInteger bigInt = new BigInteger(1, b);
             return bigInt.toString(16);
@@ -213,7 +214,7 @@ public class Common {
         SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
         IvParameterSpec ivps = new IvParameterSpec(iv.getBytes());
         cipher.init(Cipher.ENCRYPT_MODE, skeySpec, ivps);
-        byte[] encrypted = cipher.doFinal(encData.getBytes("utf-8"));
+        byte[] encrypted = cipher.doFinal(encData.getBytes(StandardCharsets.UTF_8));
         return MyBase64.encode(encrypted);// 此处使用BASE64做转码。
     }
 

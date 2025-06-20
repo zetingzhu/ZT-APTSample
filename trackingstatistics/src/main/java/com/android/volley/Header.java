@@ -29,11 +29,11 @@ public final class Header {
         mValue = value;
     }
 
-    public final String getName() {
+    public String getName() {
         return mName;
     }
 
-    public final String getValue() {
+    public String getValue() {
         return mValue;
     }
 

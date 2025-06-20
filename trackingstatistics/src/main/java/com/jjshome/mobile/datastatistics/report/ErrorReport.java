@@ -11,7 +11,7 @@ import java.util.Map;
  * wq@jjshome.com
  */
 public class ErrorReport implements IReport {
-    private ErrorInfo mErrorInfo;
+    private final ErrorInfo mErrorInfo;
 
     public ErrorReport(ErrorInfo errorInfo) {
         mErrorInfo = errorInfo;

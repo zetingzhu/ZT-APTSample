@@ -57,8 +57,7 @@ public class TotpUtil {
 
         // Copy all the REAL bytes, not the "first"
         byte[] ret = new byte[bArray.length - 1];
-        for (int i = 0; i < ret.length; i++)
-            ret[i] = bArray[i + 1];
+        System.arraycopy(bArray, 1, ret, 0, ret.length);
         return ret;
     }
 

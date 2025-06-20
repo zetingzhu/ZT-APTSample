@@ -3,6 +3,7 @@ package com.jjshome.mobile.datastatistics;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +13,7 @@ import java.io.UnsupportedEncodingException;
  * To change this template use File | Settings | File Templates.
  */
 public class MyBase64 {
-    private static char[] base64EncodeChars = new char[]{
+    private static final char[] base64EncodeChars = new char[]{
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
             'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
             'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
@@ -22,7 +23,7 @@ public class MyBase64 {
             'w', 'x', 'y', 'z', '0', '1', '2', '3',
             '4', '5', '6', '7', '8', '9', '+', '/'};
 
-    private static byte[] base64DecodeChars = new byte[]{
+    private static final byte[] base64DecodeChars = new byte[]{
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63,
@@ -66,7 +67,7 @@ public class MyBase64 {
 
     public static byte[] decode(String str) throws UnsupportedEncodingException {
         StringBuffer sb = new StringBuffer();
-        byte[] data = str.getBytes("US-ASCII");
+        byte[] data = str.getBytes(StandardCharsets.US_ASCII);
         int len = data.length;
         int i = 0;
         int b1, b2, b3, b4;

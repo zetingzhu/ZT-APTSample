@@ -34,6 +34,7 @@ import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -609,7 +610,7 @@ public class DiskBasedCache implements Cache {
     }
 
     static void writeString(OutputStream os, String s) throws IOException {
-        byte[] b = s.getBytes("UTF-8");
+        byte[] b = s.getBytes(StandardCharsets.UTF_8);
         writeLong(os, b.length);
         os.write(b, 0, b.length);
     }
@@ -617,7 +618,7 @@ public class DiskBasedCache implements Cache {
     static String readString(CountingInputStream cis) throws IOException {
         long n = readLong(cis);
         byte[] b = streamToBytes(cis, n);
-        return new String(b, "UTF-8");
+        return new String(b, StandardCharsets.UTF_8);
     }
 
     static void writeHeaderList(List<Header> headers, OutputStream os) throws IOException {
@@ -637,7 +638,7 @@ public class DiskBasedCache implements Cache {
         if (size < 0) {
             throw new IOException("readHeaderList size=" + size);
         }
-        List<Header> result = (size == 0) ? Collections.<Header>emptyList() : new ArrayList<Header>();
+        List<Header> result = (size == 0) ? Collections.emptyList() : new ArrayList<Header>();
         for (int i = 0; i < size; i++) {
             String name = readString(cis).intern();
             String value = readString(cis).intern();

@@ -17,7 +17,7 @@ import static com.common.lib.tint.utils.DrawableUtils.obtainAttributes;
 
 class VectorDrawableInflateImpl implements DrawableInflateDelegate {
 
-    private int resId;
+    private final int resId;
 
     public VectorDrawableInflateImpl(int resId) {
         this.resId = resId;

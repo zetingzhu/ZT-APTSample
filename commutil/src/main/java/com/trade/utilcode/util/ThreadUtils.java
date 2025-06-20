@@ -873,7 +873,7 @@ public final class ThreadUtils {
      * @param tasks The tasks to cancel.
      */
     public static void cancel(final Task... tasks) {
-        if (tasks == null || tasks.length == 0) return;
+        if (tasks == null) return;
         for (Task task : tasks) {
             if (task == null) continue;
             task.cancel();
@@ -1034,7 +1034,7 @@ public final class ThreadUtils {
 
         private final AtomicInteger mSubmittedCount = new AtomicInteger();
 
-        private LinkedBlockingQueue4Util mWorkQueue;
+        private final LinkedBlockingQueue4Util mWorkQueue;
 
         ThreadPoolExecutor4Util(int corePoolSize, int maximumPoolSize,
                                 long keepAliveTime, TimeUnit unit,
@@ -1342,8 +1342,8 @@ public final class ThreadUtils {
 
     public static class SyncValue<T> {
 
-        private CountDownLatch mLatch = new CountDownLatch(1);
-        private AtomicBoolean  mFlag  = new AtomicBoolean();
+        private final CountDownLatch mLatch = new CountDownLatch(1);
+        private final AtomicBoolean  mFlag  = new AtomicBoolean();
         private T              mValue;
 
         public void setValue(T value) {

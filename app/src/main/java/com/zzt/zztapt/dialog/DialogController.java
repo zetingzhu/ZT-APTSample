@@ -165,7 +165,7 @@ public class DialogController {
     // 右边边缘距离
     int spaceMarginRight;
     //所有添加的布局类型
-    private List<View> mAddList;
+    private final List<View> mAddList;
 
     // 右上角删除
     Drawable delImg;
@@ -189,7 +189,7 @@ public class DialogController {
 
 
     // 监听事件
-    private Handler mHandler;
+    private final Handler mHandler;
     // 设置延迟消失事件
     long dialogDelayMillis;
 
@@ -231,7 +231,7 @@ public class DialogController {
         private static final int BUTTON_LEFT = -1;
         private static final int BUTTON_RIGHT = -2;
 
-        private WeakReference<DialogInterface> mHandleDialog;
+        private final WeakReference<DialogInterface> mHandleDialog;
 
         public ButtonHandler(DialogInterface dialog) {
             mHandleDialog = new WeakReference<>(dialog);

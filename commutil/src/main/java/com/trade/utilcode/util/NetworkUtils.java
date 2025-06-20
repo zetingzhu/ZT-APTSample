@@ -871,7 +871,7 @@ public final class NetworkUtils {
         }
 
         private NetworkType                         mType;
-        private Set<OnNetworkStatusChangedListener> mListeners = new HashSet<>();
+        private final Set<OnNetworkStatusChangedListener> mListeners = new HashSet<>();
 
         @RequiresPermission(ACCESS_NETWORK_STATE)
         void registerListener(final OnNetworkStatusChangedListener listener) {

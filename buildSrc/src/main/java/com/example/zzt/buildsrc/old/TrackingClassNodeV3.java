@@ -1,7 +1,7 @@
-package com.example.zzt.buildsrc;
+package com.example.zzt.buildsrc.old;
 
-import com.example.zzt.buildsrc.lambda.AnalyticsHookConfig;
-import com.example.zzt.buildsrc.lambda.AnalyticsMethodObj;
+import com.example.zzt.buildsrc.old.lambda.AnalyticsHookConfig;
+import com.example.zzt.buildsrc.old.lambda.AnalyticsMethodObj;
 
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassVisitor;
@@ -27,11 +27,11 @@ public class TrackingClassNodeV3 extends ClassVisitor {
     public static final Long Version = 20240702L;
 
     // 解析类名字
-    private String className;
+    private final String className;
     /**
      * 存储 Lambda 和方法对应字节码关系
      */
-    private Map<String, AnalyticsMethodObj> mLambdaMethodCells = new HashMap<>();
+    private final Map<String, AnalyticsMethodObj> mLambdaMethodCells = new HashMap<>();
 
     private AdviceAdapter newMethodVisitor;
 
@@ -111,8 +111,7 @@ public class TrackingClassNodeV3 extends ClassVisitor {
 
                     AnalyticsMethodObj sensorsAnalyticsMethodCell = AnalyticsHookConfig.LAMBDA_METHODS.get(hookKey);
                     if (sensorsAnalyticsMethodCell != null) {
-                        if (bsmArgs[1] instanceof Handle) {
-                            Handle it = (Handle) bsmArgs[1];
+                        if (bsmArgs[1] instanceof Handle it) {
                             /**
                              * name:lambda$onCreate$0
                              * desc:(Landroid/view/View;)V

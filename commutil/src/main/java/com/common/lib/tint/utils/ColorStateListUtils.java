@@ -115,7 +115,7 @@ final class ColorStateListUtils {
         return null;
     }
 
-    protected static int[] extractStateSet(AttributeSet attrs) {
+    private static int[] extractStateSet(AttributeSet attrs) {
         int j = 0;
         final int numAttrs = attrs.getAttributeCount();
         int[] states = new int[numAttrs];

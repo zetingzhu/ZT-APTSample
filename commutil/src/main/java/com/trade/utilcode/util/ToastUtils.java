@@ -77,7 +77,7 @@ public final class ToastUtils {
     private int        mTextColor          = COLOR_DEFAULT;
     private int        mTextSize           = -1;
     private boolean    isLong              = false;
-    private Drawable[] mIcons              = new Drawable[4];
+    private final Drawable[] mIcons              = new Drawable[4];
     private boolean    isNotUseSystemToast = false;
 
     /**
@@ -95,7 +95,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setMode(@MODE String mode) {
+    public ToastUtils setMode(@MODE String mode) {
         mMode = mode;
         return this;
     }
@@ -109,7 +109,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setGravity(final int gravity, final int xOffset, final int yOffset) {
+    public ToastUtils setGravity(final int gravity, final int xOffset, final int yOffset) {
         mGravity = gravity;
         mXOffset = xOffset;
         mYOffset = yOffset;
@@ -123,7 +123,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setBgColor(@ColorInt final int backgroundColor) {
+    public ToastUtils setBgColor(@ColorInt final int backgroundColor) {
         mBgColor = backgroundColor;
         return this;
     }
@@ -135,7 +135,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setBgResource(@DrawableRes final int bgResource) {
+    public ToastUtils setBgResource(@DrawableRes final int bgResource) {
         mBgResource = bgResource;
         return this;
     }
@@ -147,7 +147,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setTextColor(@ColorInt final int msgColor) {
+    public ToastUtils setTextColor(@ColorInt final int msgColor) {
         mTextColor = msgColor;
         return this;
     }
@@ -159,7 +159,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setTextSize(final int textSize) {
+    public ToastUtils setTextSize(final int textSize) {
         mTextSize = textSize;
         return this;
     }
@@ -170,7 +170,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setDurationIsLong(boolean isLong) {
+    public ToastUtils setDurationIsLong(boolean isLong) {
         this.isLong = isLong;
         return this;
     }
@@ -182,7 +182,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setLeftIcon(@DrawableRes int resId) {
+    public ToastUtils setLeftIcon(@DrawableRes int resId) {
         return setLeftIcon(ContextCompat.getDrawable(Utils.getApp(), resId));
     }
 
@@ -193,7 +193,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setLeftIcon(@Nullable Drawable drawable) {
+    public ToastUtils setLeftIcon(@Nullable Drawable drawable) {
         mIcons[0] = drawable;
         return this;
     }
@@ -205,7 +205,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setTopIcon(@DrawableRes int resId) {
+    public ToastUtils setTopIcon(@DrawableRes int resId) {
         return setTopIcon(ContextCompat.getDrawable(Utils.getApp(), resId));
     }
 
@@ -216,7 +216,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setTopIcon(@Nullable Drawable drawable) {
+    public ToastUtils setTopIcon(@Nullable Drawable drawable) {
         mIcons[1] = drawable;
         return this;
     }
@@ -228,7 +228,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setRightIcon(@DrawableRes int resId) {
+    public ToastUtils setRightIcon(@DrawableRes int resId) {
         return setRightIcon(ContextCompat.getDrawable(Utils.getApp(), resId));
     }
 
@@ -239,7 +239,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setRightIcon(@Nullable Drawable drawable) {
+    public ToastUtils setRightIcon(@Nullable Drawable drawable) {
         mIcons[2] = drawable;
         return this;
     }
@@ -251,7 +251,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setBottomIcon(int resId) {
+    public ToastUtils setBottomIcon(int resId) {
         return setBottomIcon(ContextCompat.getDrawable(Utils.getApp(), resId));
     }
 
@@ -262,7 +262,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setBottomIcon(@Nullable Drawable drawable) {
+    public ToastUtils setBottomIcon(@Nullable Drawable drawable) {
         mIcons[3] = drawable;
         return this;
     }
@@ -273,7 +273,7 @@ public final class ToastUtils {
      * @return the single {@link ToastUtils} instance
      */
     @NonNull
-    public final ToastUtils setNotUseSystemToast() {
+    public ToastUtils setNotUseSystemToast() {
         isNotUseSystemToast = true;
         return this;
     }
@@ -293,7 +293,7 @@ public final class ToastUtils {
      *
      * @param text The text.
      */
-    public final void show(@Nullable final CharSequence text) {
+    public void show(@Nullable final CharSequence text) {
         show(text, getDuration(), this);
     }
 
@@ -302,7 +302,7 @@ public final class ToastUtils {
      *
      * @param resId The resource id for text.
      */
-    public final void show(@StringRes final int resId) {
+    public void show(@StringRes final int resId) {
         show(UtilsBridge.getString(resId), getDuration(), this);
     }
 
@@ -312,7 +312,7 @@ public final class ToastUtils {
      * @param resId The resource id for text.
      * @param args  The args.
      */
-    public final void show(@StringRes final int resId, final Object... args) {
+    public void show(@StringRes final int resId, final Object... args) {
         show(UtilsBridge.getString(resId, args), getDuration(), this);
     }
 
@@ -322,14 +322,14 @@ public final class ToastUtils {
      * @param format The format.
      * @param args   The args.
      */
-    public final void show(@Nullable final String format, final Object... args) {
+    public void show(@Nullable final String format, final Object... args) {
         show(UtilsBridge.format(format, args), getDuration(), this);
     }
 
     /**
      * Show custom toast.
      */
-    public final void show(@NonNull final View view) {
+    public void show(@NonNull final View view) {
         show(view, getDuration(), this);
     }
 
@@ -558,7 +558,7 @@ public final class ToastUtils {
         }
 
         static class SafeHandler extends Handler {
-            private Handler impl;
+            private final Handler impl;
 
             SafeHandler(Handler impl) {
                 this.impl = impl;
@@ -584,7 +584,7 @@ public final class ToastUtils {
 
         private WindowManager mWM;
 
-        private WindowManager.LayoutParams mParams;
+        private final WindowManager.LayoutParams mParams;
 
         WindowManagerToast(ToastUtils toastUtils, int type) {
             super(toastUtils);

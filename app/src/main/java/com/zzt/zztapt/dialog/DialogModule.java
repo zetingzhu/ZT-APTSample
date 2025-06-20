@@ -57,8 +57,8 @@ public class DialogModule extends BaseShowDismissAppCompatDialog {
     }
 
     public static class Builder {
-        private DialogController P;
-        private DialogModule dialog;
+        private final DialogController P;
+        private final DialogModule dialog;
 
         public Builder(@NonNull Context context) {
             this(context, 0);
@@ -561,11 +561,7 @@ public class DialogModule extends BaseShowDismissAppCompatDialog {
         public DialogModule create() {
             P.installContent();
             dialog.setCancelable(P.mCancelable);
-            if (P.mCancelable) {
-                dialog.setCanceledOnTouchOutside(true);
-            } else {
-                dialog.setCanceledOnTouchOutside(false);
-            }
+            dialog.setCanceledOnTouchOutside(P.mCancelable);
             dialog.setOnCancelListener(P.mOnCancelListener);
             dialog.setOnDismissListener(P.mOnDismissListener);
             return dialog;

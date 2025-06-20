@@ -1,10 +1,8 @@
-package com.example.zzt.buildsrc
+package com.example.zzt.buildsrc.old
 
 import com.android.build.api.instrumentation.FramesComputationMode
 import com.android.build.api.instrumentation.InstrumentationScope
 import com.android.build.api.variant.AndroidComponentsExtension
-import com.android.build.api.variant.Component
-import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

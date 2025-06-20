@@ -155,11 +155,7 @@ public class FrameInfoHelper {
 //            Log.d("======000", view.toString());
 //            return true;
 //        }
-        if (view instanceof SwitchCompat) {
-            return true;
-        }
-
-        return false;
+        return view instanceof SwitchCompat;
     }
 
     private static boolean isViewSelfVisible(View mView) {
@@ -357,21 +353,14 @@ public class FrameInfoHelper {
         if ((view instanceof ViewGroup) && view instanceof RecyclerView) {
             return true;
         }
-        if (view instanceof AdapterView) {
-            return true;
-        }
-
-        return false;
+        return view instanceof AdapterView;
     }
 
     private static boolean isChexBox(View view) {
         /*********归类到index***********/
         if (view instanceof SwitchCompat) {
             return true;
-        } else if (view instanceof CheckBox) {
-            return true;
-        }
-        return false;
+        } else return view instanceof CheckBox;
     }
 
 

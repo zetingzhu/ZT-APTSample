@@ -5,8 +5,9 @@ plugins {
 }
 
 // 使用自定义的 plugin
-import com.example.zzt.buildsrc.TrackingPluginV3
-apply plugin: TrackingPluginV3
+import com.example.zzt.buildsrc.n80.TrackingPlugin80
+
+apply plugin: TrackingPlugin80
 
 android {
     namespace "com.zzt.zztapt"

@@ -68,7 +68,7 @@ class ActTestKotlin : AppCompatActivity() {
                 android.R.layout.test_list_item,
                 mList?.toList() ?: arrayListOf()
             )
-        list_view?.setAdapter(adapter)
+        list_view?.adapter = adapter
         list_view?.setOnItemClickListener { parent, view, position, id ->
             println("ASM- list_view item pos:$position  Lambda")
         }

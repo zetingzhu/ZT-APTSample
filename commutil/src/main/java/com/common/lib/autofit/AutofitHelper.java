@@ -241,8 +241,8 @@ public class AutofitHelper {
     }
 
     // Attributes
-    private TextView mTextView;
-    private TextPaint mPaint;
+    private final TextView mTextView;
+    private final TextPaint mPaint;
     /**
      * Original textSize of the TextView.
      */
@@ -258,9 +258,9 @@ public class AutofitHelper {
 
     private ArrayList<OnTextSizeChangeListener> mListeners;
 
-    private TextWatcher mTextWatcher = new AutofitTextWatcher();
+    private final TextWatcher mTextWatcher = new AutofitTextWatcher();
 
-    private View.OnLayoutChangeListener mOnLayoutChangeListener =
+    private final View.OnLayoutChangeListener mOnLayoutChangeListener =
             new AutofitOnLayoutChangeListener();
 
     private AutofitHelper(TextView view) {
@@ -574,7 +574,7 @@ public class AutofitHelper {
          * This method is called to notify you that the size of the text has changed to
          * {@code textSize} from {@code oldTextSize}.
          */
-        public void onTextSizeChange(float textSize, float oldTextSize);
+        void onTextSizeChange(float textSize, float oldTextSize);
     }
 
 

@@ -5,7 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 
 public class ClassHelper {
 
-    private static boolean sHasAndroidXViewPager;
+    private static final boolean sHasAndroidXViewPager;
 
     // todo recyclerView, support包其他列表
 

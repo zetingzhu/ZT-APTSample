@@ -51,7 +51,7 @@ public final class SnackbarUtils {
 
     private static WeakReference<Snackbar> sWeakSnackbar;
 
-    private View                 view;
+    private final View                 view;
     private CharSequence         message;
     private int                  messageColor;
     private int                  bgColor;

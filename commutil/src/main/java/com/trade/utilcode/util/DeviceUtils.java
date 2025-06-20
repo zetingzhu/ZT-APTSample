@@ -180,7 +180,7 @@ public final class DeviceUtils {
         if ("02:00:00:00:00:00".equals(address)) {
             return false;
         }
-        if (excepts == null || excepts.length == 0) {
+        if (excepts == null) {
             return true;
         }
         for (String filter : excepts) {
@@ -373,7 +373,7 @@ public final class DeviceUtils {
                 operatorName = name;
             }
         }
-        boolean checkOperatorName = operatorName.toLowerCase().equals("android");
+        boolean checkOperatorName = operatorName.equalsIgnoreCase("android");
         if (checkOperatorName) return true;
 
         String url = "tel:" + "123456";
@@ -381,12 +381,10 @@ public final class DeviceUtils {
         intent.setData(Uri.parse(url));
         intent.setAction(Intent.ACTION_DIAL);
         boolean checkDial = intent.resolveActivity(Utils.getApp().getPackageManager()) == null;
-        if (checkDial) return true;
+        return checkDial;
 
 //        boolean checkDebuggerConnected = Debug.isDebuggerConnected();
 //        if (checkDebuggerConnected) return true;
-
-        return false;
     }
 
     /**

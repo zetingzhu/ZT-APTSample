@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class TrackingClassNodeV2 extends ClassNode {
     private static final String TAG = "ASM-ClassNode";
-    private ClassVisitor classVisitor;
+    private final ClassVisitor classVisitor;
     //类名
     private String className;
     // 父类名
@@ -136,7 +136,6 @@ public class TrackingClassNodeV2 extends ClassNode {
                             return;
                         }
                     }
-                    return;
                 }
             }
 
@@ -185,11 +184,12 @@ public class TrackingClassNodeV2 extends ClassNode {
 
     boolean isMatchingInterfaces(String[] interfaces, String interfaceName) {
         boolean isMatch = false;
-        if (interfaces != null && interfaces.length > 0) {
+        if (interfaces != null) {
             // 是否满足实现的接口
             for (String inteface : interfaces) {
                 if (Objects.equals(inteface, interfaceName)) {
                     isMatch = true;
+                    break;
                 }
             }
         }

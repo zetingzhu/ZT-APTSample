@@ -18,7 +18,7 @@ import com.android.volley.toolbox.Volley;
 public class GlobalRequest {
     private static GlobalRequest mInstance;
     private RequestQueue mRequestQueue;
-    private ImageLoader mImageLoader;
+    private final ImageLoader mImageLoader;
     private static Context mCtx;
 
     private GlobalRequest(Context context) {

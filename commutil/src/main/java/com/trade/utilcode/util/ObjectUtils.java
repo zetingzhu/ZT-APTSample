@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -74,10 +75,8 @@ public final class ObjectUtils {
             return true;
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            if (obj instanceof android.util.LongSparseArray
-                    && ((android.util.LongSparseArray) obj).size() == 0) {
-                return true;
-            }
+            return obj instanceof android.util.LongSparseArray
+                    && ((android.util.LongSparseArray) obj).size() == 0;
         }
         return false;
     }
@@ -185,7 +184,7 @@ public final class ObjectUtils {
      * @return {@code true}: yes<br>{@code false}: no
      */
     public static boolean equals(final Object o1, final Object o2) {
-        return o1 == o2 || (o1 != null && o1.equals(o2));
+        return Objects.equals(o1, o2);
     }
 
     /**

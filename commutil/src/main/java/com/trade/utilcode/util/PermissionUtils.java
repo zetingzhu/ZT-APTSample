@@ -41,7 +41,7 @@ public final class PermissionUtils {
 
     private static PermissionUtils sInstance;
 
-    private String[]            mPermissionsParam;
+    private final String[]            mPermissionsParam;
     private OnExplainListener   mOnExplainListener;
     private OnRationaleListener mOnRationaleListener;
     private SingleCallback      mSingleCallback;
@@ -427,7 +427,7 @@ public final class PermissionUtils {
 
         private static int currentRequestCode = -1;
 
-        private static PermissionActivityImpl INSTANCE = new PermissionActivityImpl();
+        private static final PermissionActivityImpl INSTANCE = new PermissionActivityImpl();
 
         public static void start(final int type) {
             UtilsTransActivity.start(new Utils.Consumer<Intent>() {

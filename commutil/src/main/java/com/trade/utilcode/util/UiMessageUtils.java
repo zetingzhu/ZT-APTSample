@@ -43,7 +43,7 @@ public final class UiMessageUtils implements Handler.Callback {
      *
      * @param id The message ID.
      */
-    public final void send(final int id) {
+    public void send(final int id) {
         mHandler.sendEmptyMessage(id);
     }
 
@@ -53,7 +53,7 @@ public final class UiMessageUtils implements Handler.Callback {
      * @param id  The message ID.
      * @param obj The object.
      */
-    public final void send(final int id, @NonNull final Object obj) {
+    public void send(final int id, @NonNull final Object obj) {
         mHandler.sendMessage(mHandler.obtainMessage(id, obj));
     }
 
@@ -89,7 +89,7 @@ public final class UiMessageUtils implements Handler.Callback {
                 mListenersUniversal.add(listener);
             } else {
                 if (DEBUG) {
-                    Log.w(TAG, "Listener is already added. " + listener.toString());
+                    Log.w(TAG, "Listener is already added. " + listener);
                 }
             }
         }
@@ -103,7 +103,7 @@ public final class UiMessageUtils implements Handler.Callback {
     public void removeListener(@NonNull final UiMessageCallback listener) {
         synchronized (mListenersUniversal) {
             if (DEBUG && !mListenersUniversal.contains(listener)) {
-                Log.w(TAG, "Trying to remove a listener that is not registered. " + listener.toString());
+                Log.w(TAG, "Trying to remove a listener that is not registered. " + listener);
             }
             mListenersUniversal.remove(listener);
         }
@@ -194,7 +194,7 @@ public final class UiMessageUtils implements Handler.Callback {
         final List<UiMessageCallback> idListeners = mListenersSpecific.get(msg.getId());
 
         if ((idListeners == null || idListeners.size() == 0) && mListenersUniversal.size() == 0) {
-            Log.w(TAG, "Delivering FAILED for message ID " + msg.getId() + ". No listeners. " + msg.toString());
+            Log.w(TAG, "Delivering FAILED for message ID " + msg.getId() + ". No listeners. " + msg);
         } else {
             final StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("Delivering message ID ");
@@ -230,7 +230,7 @@ public final class UiMessageUtils implements Handler.Callback {
                     stringBuilder.append("], Message: ");
                 }
             }
-            stringBuilder.append(msg.toString());
+            stringBuilder.append(msg);
 
             Log.v(TAG, stringBuilder.toString());
         }

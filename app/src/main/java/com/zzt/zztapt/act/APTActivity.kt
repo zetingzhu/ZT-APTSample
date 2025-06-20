@@ -39,6 +39,13 @@ class APTActivity : AppCompatActivity() {
         mListDialog.add(StartActivityDao("Java", "点击事件对比", "3"))
         mListDialog.add(StartActivityDao("Java", "点击事件传递分析", "4"))
         mListDialog.add(StartActivityDao("TagLayout", "TagLayout点击事件", "5"))
+        mListDialog.add(
+            StartActivityDao(
+                "TagLayout Lambda",
+                "TagLayout kotlin Lambda 点击事件",
+                "6"
+            )
+        )
 
         StartActivityRecyclerAdapter.setAdapterData(
             binding.rvList,
@@ -64,6 +71,10 @@ class APTActivity : AppCompatActivity() {
 
                 "5" -> {
                     ActTabLayout.start(this@APTActivity)
+                }
+
+                "6" -> {
+                    ActTabLayoutKotlin.start(this@APTActivity)
                 }
             }
         }

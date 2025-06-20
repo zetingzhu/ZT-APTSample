@@ -35,9 +35,9 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class MessengerUtils {
 
-    private static ConcurrentHashMap<String, MessageCallback> subscribers = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<String, MessageCallback> subscribers = new ConcurrentHashMap<>();
 
-    private static Map<String, Client> sClientMap = new HashMap<>();
+    private static final Map<String, Client> sClientMap = new HashMap<>();
     private static Client              sLocalClient;
 
     private static final int    WHAT_SUBSCRIBE   = 0x00;

@@ -1,4 +1,4 @@
-package com.example.zzt.buildsrc.lambda;
+package com.example.zzt.buildsrc.n80.entiy;
 
 import java.util.List;
 import java.util.Objects;
@@ -126,8 +126,7 @@ public class AnalyticsMethodObj {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof AnalyticsMethodObj)) return false;
-        AnalyticsMethodObj that = (AnalyticsMethodObj) o;
+        if (!(o instanceof AnalyticsMethodObj that)) return false;
         return Objects.equals(getName(), that.getName()) && Objects.equals(getDesc(), that.getDesc()) && Objects.equals(getAgentName(), that.getAgentName()) && Objects.equals(getParent(), that.getParent()) && Objects.equals(getAgentDesc(), that.getAgentDesc()) && Objects.equals(getParamsStart(), that.getParamsStart()) && Objects.equals(getParamsCount(), that.getParamsCount()) && Objects.equals(getOpcodes(), that.getOpcodes());
     }
 

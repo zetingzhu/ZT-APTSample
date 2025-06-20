@@ -270,7 +270,7 @@ public class I18NUtils {
         String lc = getLanguageCountry(mContext);
         /*zh-CN*/
         if (lc.contains(SPLIT)) {
-            String str[] = lc.split(SPLIT);
+            String[] str = lc.split(SPLIT);
             if (str.length < 2)
                 return mContext;
             Log.v(TAG, "language=" + str[0] + " country=" + str[1]);
@@ -283,7 +283,7 @@ public class I18NUtils {
         Locale locale = context.getResources().getConfiguration().locale;
         String lc = getLanguageCountry(context);
         if (lc.contains(SPLIT)) {
-            String str[] = lc.split(SPLIT);
+            String[] str = lc.split(SPLIT);
             if (str.length < 1)
                 return locale;
             locale = new Locale(str[0], str[1]);

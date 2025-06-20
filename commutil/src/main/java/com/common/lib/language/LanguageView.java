@@ -13,7 +13,7 @@ import androidx.annotation.StringRes;
 
 public interface LanguageView {
     /*xml的schema*/
-    public static final String ANDROIDXML = "http://schemas.android.com/apk/res/android";
+    String ANDROIDXML = "http://schemas.android.com/apk/res/android";
 
     //由于setText无法被重写
     void setTextById(@StringRes int id);

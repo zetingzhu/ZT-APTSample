@@ -16,7 +16,7 @@ import java.util.Map;
  * wq@jjshome.com
  */
 public class EventReport implements IReport {
-    private EventInfo mEventInfo;
+    private final EventInfo mEventInfo;
 
     public EventReport(EventInfo eventInfo) {
         mEventInfo = eventInfo;

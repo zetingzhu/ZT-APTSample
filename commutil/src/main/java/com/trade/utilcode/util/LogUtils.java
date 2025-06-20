@@ -615,7 +615,7 @@ public final class LogUtils {
     }
 
     public static final class Config {
-        private String                  mDefaultDir;                // The default storage directory of log.
+        private final String                  mDefaultDir;                // The default storage directory of log.
         private String                  mDir;                       // The storage directory of log.
         private String                  mFilePrefix        = "util";// The file prefix of log.
         private String                  mFileExtension     = ".txt";// The file extension of log.
@@ -632,11 +632,11 @@ public final class LogUtils {
         private int                     mStackDeep         = 1;     // The stack's deep of log.
         private int                     mStackOffset       = 0;     // The stack's offset of log.
         private int                     mSaveDays          = -1;    // The save days of log.
-        private String                  mProcessName       = UtilsBridge.getCurrentProcessName();
+        private final String                  mProcessName       = UtilsBridge.getCurrentProcessName();
         private IFileWriter             mFileWriter;
         private OnConsoleOutputListener mOnConsoleOutputListener;
         private OnFileOutputListener    mOnFileOutputListener;
-        private UtilsBridge.FileHead    mFileHead          = new UtilsBridge.FileHead("Log");
+        private final UtilsBridge.FileHead    mFileHead          = new UtilsBridge.FileHead("Log");
 
         private Config() {
             if (UtilsBridge.isSDCardEnableByEnvironment()
@@ -647,17 +647,17 @@ public final class LogUtils {
             }
         }
 
-        public final Config setLogSwitch(final boolean logSwitch) {
+        public Config setLogSwitch(final boolean logSwitch) {
             mLogSwitch = logSwitch;
             return this;
         }
 
-        public final Config setConsoleSwitch(final boolean consoleSwitch) {
+        public Config setConsoleSwitch(final boolean consoleSwitch) {
             mLog2ConsoleSwitch = consoleSwitch;
             return this;
         }
 
-        public final Config setGlobalTag(final String tag) {
+        public Config setGlobalTag(final String tag) {
             if (UtilsBridge.isSpace(tag)) {
                 mGlobalTag = "";
                 mTagIsSpace = true;
@@ -668,17 +668,17 @@ public final class LogUtils {
             return this;
         }
 
-        public final Config setLogHeadSwitch(final boolean logHeadSwitch) {
+        public Config setLogHeadSwitch(final boolean logHeadSwitch) {
             mLogHeadSwitch = logHeadSwitch;
             return this;
         }
 
-        public final Config setLog2FileSwitch(final boolean log2FileSwitch) {
+        public Config setLog2FileSwitch(final boolean log2FileSwitch) {
             mLog2FileSwitch = log2FileSwitch;
             return this;
         }
 
-        public final Config setDir(final String dir) {
+        public Config setDir(final String dir) {
             if (UtilsBridge.isSpace(dir)) {
                 mDir = null;
             } else {
@@ -687,12 +687,12 @@ public final class LogUtils {
             return this;
         }
 
-        public final Config setDir(final File dir) {
+        public Config setDir(final File dir) {
             mDir = dir == null ? null : (dir.getAbsolutePath() + FILE_SEP);
             return this;
         }
 
-        public final Config setFilePrefix(final String filePrefix) {
+        public Config setFilePrefix(final String filePrefix) {
             if (UtilsBridge.isSpace(filePrefix)) {
                 mFilePrefix = "util";
             } else {
@@ -701,7 +701,7 @@ public final class LogUtils {
             return this;
         }
 
-        public final Config setFileExtension(final String fileExtension) {
+        public Config setFileExtension(final String fileExtension) {
             if (UtilsBridge.isSpace(fileExtension)) {
                 mFileExtension = ".txt";
             } else {
@@ -714,148 +714,148 @@ public final class LogUtils {
             return this;
         }
 
-        public final Config setBorderSwitch(final boolean borderSwitch) {
+        public Config setBorderSwitch(final boolean borderSwitch) {
             mLogBorderSwitch = borderSwitch;
             return this;
         }
 
-        public final Config setSingleTagSwitch(final boolean singleTagSwitch) {
+        public Config setSingleTagSwitch(final boolean singleTagSwitch) {
             mSingleTagSwitch = singleTagSwitch;
             return this;
         }
 
-        public final Config setConsoleFilter(@TYPE final int consoleFilter) {
+        public Config setConsoleFilter(@TYPE final int consoleFilter) {
             mConsoleFilter = consoleFilter;
             return this;
         }
 
-        public final Config setFileFilter(@TYPE final int fileFilter) {
+        public Config setFileFilter(@TYPE final int fileFilter) {
             mFileFilter = fileFilter;
             return this;
         }
 
-        public final Config setStackDeep(@IntRange(from = 1) final int stackDeep) {
+        public Config setStackDeep(@IntRange(from = 1) final int stackDeep) {
             mStackDeep = stackDeep;
             return this;
         }
 
-        public final Config setStackOffset(@IntRange(from = 0) final int stackOffset) {
+        public Config setStackOffset(@IntRange(from = 0) final int stackOffset) {
             mStackOffset = stackOffset;
             return this;
         }
 
-        public final Config setSaveDays(@IntRange(from = 1) final int saveDays) {
+        public Config setSaveDays(@IntRange(from = 1) final int saveDays) {
             mSaveDays = saveDays;
             return this;
         }
 
-        public final <T> Config addFormatter(final IFormatter<T> iFormatter) {
+        public <T> Config addFormatter(final IFormatter<T> iFormatter) {
             if (iFormatter != null) {
                 I_FORMATTER_MAP.put(getTypeClassFromParadigm(iFormatter), iFormatter);
             }
             return this;
         }
 
-        public final Config setFileWriter(final IFileWriter fileWriter) {
+        public Config setFileWriter(final IFileWriter fileWriter) {
             mFileWriter = fileWriter;
             return this;
         }
 
-        public final Config setOnConsoleOutputListener(final OnConsoleOutputListener listener) {
+        public Config setOnConsoleOutputListener(final OnConsoleOutputListener listener) {
             mOnConsoleOutputListener = listener;
             return this;
         }
 
-        public final Config setOnFileOutputListener(final OnFileOutputListener listener) {
+        public Config setOnFileOutputListener(final OnFileOutputListener listener) {
             mOnFileOutputListener = listener;
             return this;
         }
 
-        public final Config addFileExtraHead(final Map<String, String> fileExtraHead) {
+        public Config addFileExtraHead(final Map<String, String> fileExtraHead) {
             mFileHead.append(fileExtraHead);
             return this;
         }
 
-        public final Config addFileExtraHead(final String key, final String value) {
+        public Config addFileExtraHead(final String key, final String value) {
             mFileHead.append(key, value);
             return this;
         }
 
-        public final String getProcessName() {
+        public String getProcessName() {
             if (mProcessName == null) return "";
             return mProcessName.replace(":", "_");
         }
 
-        public final String getDefaultDir() {
+        public String getDefaultDir() {
             return mDefaultDir;
         }
 
-        public final String getDir() {
+        public String getDir() {
             return mDir == null ? mDefaultDir : mDir;
         }
 
-        public final String getFilePrefix() {
+        public String getFilePrefix() {
             return mFilePrefix;
         }
 
-        public final String getFileExtension() {
+        public String getFileExtension() {
             return mFileExtension;
         }
 
-        public final boolean isLogSwitch() {
+        public boolean isLogSwitch() {
             return mLogSwitch;
         }
 
-        public final boolean isLog2ConsoleSwitch() {
+        public boolean isLog2ConsoleSwitch() {
             return mLog2ConsoleSwitch;
         }
 
-        public final String getGlobalTag() {
+        public String getGlobalTag() {
             if (UtilsBridge.isSpace(mGlobalTag)) return "";
             return mGlobalTag;
         }
 
-        public final boolean isLogHeadSwitch() {
+        public boolean isLogHeadSwitch() {
             return mLogHeadSwitch;
         }
 
-        public final boolean isLog2FileSwitch() {
+        public boolean isLog2FileSwitch() {
             return mLog2FileSwitch;
         }
 
-        public final boolean isLogBorderSwitch() {
+        public boolean isLogBorderSwitch() {
             return mLogBorderSwitch;
         }
 
-        public final boolean isSingleTagSwitch() {
+        public boolean isSingleTagSwitch() {
             return mSingleTagSwitch;
         }
 
-        public final char getConsoleFilter() {
+        public char getConsoleFilter() {
             return T[mConsoleFilter - V];
         }
 
-        public final char getFileFilter() {
+        public char getFileFilter() {
             return T[mFileFilter - V];
         }
 
-        public final int getStackDeep() {
+        public int getStackDeep() {
             return mStackDeep;
         }
 
-        public final int getStackOffset() {
+        public int getStackOffset() {
             return mStackOffset;
         }
 
-        public final int getSaveDays() {
+        public int getSaveDays() {
             return mSaveDays;
         }
 
-        public final boolean haveSetOnConsoleOutputListener() {
+        public boolean haveSetOnConsoleOutputListener() {
             return mOnConsoleOutputListener != null;
         }
 
-        public final boolean haveSetOnFileOutputListener() {
+        public boolean haveSetOnFileOutputListener() {
             return mOnFileOutputListener != null;
         }
 

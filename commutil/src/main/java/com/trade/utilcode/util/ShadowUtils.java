@@ -182,10 +182,10 @@ public class ShadowUtils {
         private float mShadowHorizScale  = 1f;
         private float mShadowBottomScale = 1f;
 
-        private Paint mCornerShadowPaint;
-        private Paint mEdgeShadowPaint;
+        private final Paint mCornerShadowPaint;
+        private final Paint mEdgeShadowPaint;
 
-        private RectF mContentBounds;
+        private final RectF mContentBounds;
 
         private float mCornerRadius;
 
@@ -210,7 +210,7 @@ public class ShadowUtils {
 
         private float mRotation;
 
-        private boolean isCircle;
+        private final boolean isCircle;
 
         public ShadowDrawable(Drawable content, float radius,
                               float shadowSize, float maxShadowSize, int shadowColor, boolean isCircle) {
@@ -679,7 +679,7 @@ public class ShadowUtils {
 
         public void setWrappedDrawable(Drawable drawable) {
             if (this.mDrawable != null) {
-                this.mDrawable.setCallback((Callback) null);
+                this.mDrawable.setCallback(null);
             }
 
             this.mDrawable = drawable;

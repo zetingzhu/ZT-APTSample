@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AppInfoReport implements IReport {
-    private List<MobileAppInfo> list;
+    private final List<MobileAppInfo> list;
 
     public AppInfoReport(List<MobileAppInfo> list) {
         this.list = list;

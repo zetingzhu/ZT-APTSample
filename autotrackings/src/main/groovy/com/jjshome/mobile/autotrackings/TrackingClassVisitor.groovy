@@ -5,7 +5,7 @@ import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 
 class TrackingClassVisitor extends ClassVisitor {
-    private ClassVisitor classVisitor;
+    private ClassVisitor classVisitor
     //类名
     private String className
     // 父类名
@@ -13,13 +13,13 @@ class TrackingClassVisitor extends ClassVisitor {
     //该类实现的接口
     private String[] interfaces
 
-    public TrackingClassVisitor(ClassVisitor classVisitor) {
+    TrackingClassVisitor(ClassVisitor classVisitor) {
         super(Opcodes.ASM6, classVisitor)
         this.classVisitor = classVisitor
     }
 
     @Override
-    public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+    void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         super.visit(version, access, name, signature, superName, interfaces)
         this.className = name
         this.superName = superName
@@ -27,8 +27,8 @@ class TrackingClassVisitor extends ClassVisitor {
     }
 
     @Override
-    public MethodVisitor visitMethod(int access, String name, String desc, String signature,
-                                     String[] exceptions) {
+    MethodVisitor visitMethod(int access, String name, String desc, String signature,
+                              String[] exceptions) {
         MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions)
 //        methodVisitor = new AdviceAdapter(Opcodes.ASM6, methodVisitor, access, name, desc) {
 //
@@ -114,7 +114,7 @@ class TrackingClassVisitor extends ClassVisitor {
      */
     void handleViewEventClick(String name, MethodVisitor mv) {
         mv.visitVarInsn(Opcodes.ALOAD, 1)
-        mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/jjshome/mobile/datastatistics/DSAgent", "onClickView", "(Landroid/view/View;)V", false);
+        mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/jjshome/mobile/datastatistics/DSAgent", "onClickView", "(Landroid/view/View;)V", false)
     }
 
     /**
@@ -126,7 +126,7 @@ class TrackingClassVisitor extends ClassVisitor {
         mv.visitVarInsn(Opcodes.ALOAD, 1)
         mv.visitVarInsn(Opcodes.ALOAD, 2)
         mv.visitVarInsn(Opcodes.ILOAD, 3)
-        mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/jjshome/mobile/datastatistics/DSAgent", "onAdapterClickView", "(Landroid/widget/AdapterView;Landroid/view/View;I)V", false);
+        mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/jjshome/mobile/datastatistics/DSAgent", "onAdapterClickView", "(Landroid/widget/AdapterView;Landroid/view/View;I)V", false)
     }
 
     boolean isMatchingInterfaces(String[] interfaces, String interfaceName) {

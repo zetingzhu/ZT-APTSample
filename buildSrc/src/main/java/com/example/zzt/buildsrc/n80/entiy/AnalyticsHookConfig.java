@@ -1,4 +1,4 @@
-package com.example.zzt.buildsrc.lambda;
+package com.example.zzt.buildsrc.n80.entiy;
 
 import org.objectweb.asm.Opcodes;
 
@@ -67,8 +67,8 @@ public class AnalyticsHookConfig {
         addLambdaMethod(
                 new AnalyticsMethodObj(
                         "onTabSelected",
-                        "(Landroid/support/design/widget/TabLayout$Tab;)V",
-                        "android/support/design/widget/TabLayout$OnTabSelectedListener",
+                        "(Lcom/google/android/material/tabs/TabLayout$Tab;)V",
+                        "com/google/android/material/tabs/TabLayout$OnTabSelectedListener",
                         "trackTabLayoutSelected",
                         "(Ljava/lang/Object;Ljava/lang/Object;)V",
                         0, 2,

@@ -430,7 +430,7 @@ public final class FileUtils {
         if (!srcDir.exists() || !srcDir.isDirectory()) return false;
         if (!createOrExistsDir(destDir)) return false;
         File[] files = srcDir.listFiles();
-        if (files != null && files.length > 0) {
+        if (files != null) {
             for (File file : files) {
                 File oneDestFile = new File(destPath + file.getName());
                 if (file.isFile()) {
@@ -508,7 +508,7 @@ public final class FileUtils {
         // dir isn't a directory then return false
         if (!dir.isDirectory()) return false;
         File[] files = dir.listFiles();
-        if (files != null && files.length > 0) {
+        if (files != null) {
             for (File file : files) {
                 if (file.isFile()) {
                     if (!file.delete()) return false;
@@ -606,7 +606,7 @@ public final class FileUtils {
         // dir isn't a directory then return false
         if (!dir.isDirectory()) return false;
         File[] files = dir.listFiles();
-        if (files != null && files.length != 0) {
+        if (files != null) {
             for (File file : files) {
                 if (filter.accept(file)) {
                     if (file.isFile()) {
@@ -848,7 +848,7 @@ public final class FileUtils {
         List<File> list = new ArrayList<>();
         if (!isDir(dir)) return list;
         File[] files = dir.listFiles();
-        if (files != null && files.length > 0) {
+        if (files != null) {
             for (File file : files) {
                 if (filter.accept(file)) {
                     list.add(file);
@@ -1171,7 +1171,7 @@ public final class FileUtils {
         if (!isDir(dir)) return 0;
         long len = 0;
         File[] files = dir.listFiles();
-        if (files != null && files.length > 0) {
+        if (files != null) {
             for (File file : files) {
                 if (file.isDirectory()) {
                     len += getDirLength(file);

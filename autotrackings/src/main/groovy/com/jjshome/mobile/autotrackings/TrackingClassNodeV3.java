@@ -29,7 +29,7 @@ public class TrackingClassNodeV3 extends ClassVisitor {
     /**
      * 存储 Lambda 和方法对应字节码关系
      */
-    private Map<String, AnalyticsMethodObj> mLambdaMethodCells = new HashMap<>();
+    private final Map<String, AnalyticsMethodObj> mLambdaMethodCells = new HashMap<>();
 
     public TrackingClassNodeV3(ClassVisitor visitor, String className) {
         super(Opcodes.ASM7, visitor);
@@ -106,8 +106,7 @@ public class TrackingClassNodeV3 extends ClassVisitor {
 
                     AnalyticsMethodObj sensorsAnalyticsMethodCell = AnalyticsHookConfig.LAMBDA_METHODS.get(hookKey);
                     if (sensorsAnalyticsMethodCell != null) {
-                        if (bsmArgs[1] instanceof Handle) {
-                            Handle it = (Handle) bsmArgs[1];
+                        if (bsmArgs[1] instanceof Handle it) {
                             /**
                              * name:lambda$onCreate$0
                              * desc:(Landroid/view/View;)V

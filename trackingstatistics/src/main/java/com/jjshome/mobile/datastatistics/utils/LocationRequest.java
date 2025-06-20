@@ -23,7 +23,7 @@ public class LocationRequest {
             return null;
         }
         try {
-            LocationManager locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+            LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
             String locationProvider = locationManager.getBestProvider(getCriteria(), true);
             if(!TextUtils.isEmpty(locationProvider)){
                 Location location = locationManager.getLastKnownLocation(locationProvider);
@@ -70,7 +70,7 @@ public class LocationRequest {
         public double lng;
     }
 
-    private static LocationListener locationListener = new LocationListener() {
+    private static final LocationListener locationListener = new LocationListener() {
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle arg2) {

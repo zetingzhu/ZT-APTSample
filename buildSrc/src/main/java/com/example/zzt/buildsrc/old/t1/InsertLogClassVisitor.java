@@ -1,4 +1,4 @@
-package com.example.zzt.buildsrc.t1;
+package com.example.zzt.buildsrc.old.t1;
 
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;

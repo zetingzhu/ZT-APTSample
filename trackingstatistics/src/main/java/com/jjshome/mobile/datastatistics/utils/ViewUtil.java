@@ -175,7 +175,7 @@ public class ViewUtil {
                             }
                         }
                         if (!TextUtils.isEmpty(viewText)) {
-                            stringBuilder.append(viewText.toString());
+                            stringBuilder.append(viewText);
                             stringBuilder.append("-");
                         }
                         if(stringBuilder.length()>=20){//产品要求只显示前20个字符

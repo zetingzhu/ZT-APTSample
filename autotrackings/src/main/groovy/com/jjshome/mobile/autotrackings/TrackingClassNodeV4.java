@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 public class TrackingClassNodeV4 extends ClassNode {
     private static final String TAG = "ASM-ClassNode4 ";
     //类名
-    private ClassVisitor classVisitor;
+    private final ClassVisitor classVisitor;
 
     public TrackingClassNodeV4(ClassVisitor classVisitor) {
         super(Opcodes.ASM7);

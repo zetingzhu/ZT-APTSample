@@ -618,9 +618,9 @@ class UtilsBridge {
     ///////////////////////////////////////////////////////////////////////////
     static final class FileHead {
 
-        private String                        mName;
-        private LinkedHashMap<String, String> mFirst = new LinkedHashMap<>();
-        private LinkedHashMap<String, String> mLast  = new LinkedHashMap<>();
+        private final String                        mName;
+        private final LinkedHashMap<String, String> mFirst = new LinkedHashMap<>();
+        private final LinkedHashMap<String, String> mLast  = new LinkedHashMap<>();
 
         FileHead(String name) {
             mName = name;

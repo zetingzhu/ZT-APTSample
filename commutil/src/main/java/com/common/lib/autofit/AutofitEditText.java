@@ -243,7 +243,7 @@ public class AutofitEditText extends TintEditText implements AutofitHelper.OnTex
         TextPaint paint = new TextPaint();
         paint.set(getPaint());//不能少了 已经设置好的Paint，否则算出的宽度不准
         paint.setTextSize(size);
-        int w = (int) getWidth() - getPaddingLeft() - getPaddingRight();
+        int w = getWidth() - getPaddingLeft() - getPaddingRight();
 //                StaticLayout layout = new StaticLayout(ed_upwd.getHint(), paint, w, Layout.Alignment.ALIGN_NORMAL,
 //                        1.0f, 0.0f, true);
 //                int lineCount = layout.getLineCount();

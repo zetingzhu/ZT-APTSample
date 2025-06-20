@@ -29,7 +29,7 @@ public class Luban {
     public static final int THIRD_GEAR = 3;
 
     private static final String TAG = "Luban";
-    private static String DEFAULT_DISK_CACHE_DIR = "luban_disk_cache";
+    private static final String DEFAULT_DISK_CACHE_DIR = "luban_disk_cache";
 
     private static volatile Luban INSTANCE;
 
@@ -111,7 +111,7 @@ public class Luban {
                             if (compressListener != null) compressListener.onSuccess(mFile);
                         }
                     })
-                    .onErrorResumeNext(Observable.<File>empty())
+                    .onErrorResumeNext(Observable.empty())
                     .filter(new Func1<File, Boolean>() {
                         @Override
                         public Boolean call(File file) {
@@ -140,7 +140,7 @@ public class Luban {
                             if (compressListener != null) compressListener.onSuccess(mFile);
                         }
                     })
-                    .onErrorResumeNext(Observable.<File>empty())
+                    .onErrorResumeNext(Observable.empty())
                     .filter(new Func1<File, Boolean>() {
                         @Override
                         public Boolean call(File file) {

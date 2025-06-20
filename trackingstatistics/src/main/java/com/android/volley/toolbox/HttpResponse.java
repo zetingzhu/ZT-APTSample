@@ -59,21 +59,21 @@ public final class HttpResponse {
     /**
      * Returns the HTTP status code of the response.
      */
-    public final int getStatusCode() {
+    public int getStatusCode() {
         return mStatusCode;
     }
 
     /**
      * Returns the response headers. Must not be mutated directly.
      */
-    public final List<Header> getHeaders() {
+    public List<Header> getHeaders() {
         return Collections.unmodifiableList(mHeaders);
     }
 
     /**
      * Returns the length of the content. Only valid if {@link #getContent} is non-null.
      */
-    public final int getContentLength() {
+    public int getContentLength() {
         return mContentLength;
     }
 
@@ -81,7 +81,7 @@ public final class HttpResponse {
      * Returns an {@link InputStream} of the response content. May be null to indicate that the
      * response has no content.
      */
-    public final InputStream getContent() {
+    public InputStream getContent() {
         return mContent;
     }
 }

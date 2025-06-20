@@ -1,15 +1,12 @@
-package com.example.zzt.buildsrc;
+package com.example.zzt.buildsrc.old;
 
 import com.android.build.api.instrumentation.AsmClassVisitorFactory;
 import com.android.build.api.instrumentation.ClassContext;
 import com.android.build.api.instrumentation.ClassData;
 import com.android.build.api.instrumentation.InstrumentationParameters;
-import com.example.zzt.buildsrc.t1.InsertLogClassVisitor;
-import com.example.zzt.buildsrc.t2.TimeCostClassVisitor;
+import com.example.zzt.buildsrc.old.t2.TimeCostClassVisitor;
 
 import org.objectweb.asm.ClassVisitor;
-
-import java.util.Arrays;
 
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 
@@ -37,9 +34,6 @@ public abstract class TrackingFactoryV3 implements AsmClassVisitorFactory<Instru
     @Override
     public boolean isInstrumentable(@NotNull ClassData classData) {
         String className = classData.getClassName();
-        if (className.startsWith("com.zzt.zztapt.")) {
-            return true;
-        }
-        return false;
+        return className.startsWith("com.zzt.zztapt.");
     }
 }

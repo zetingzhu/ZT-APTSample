@@ -23,7 +23,7 @@ public final class SPUtils {
 
     private static final Map<String, SPUtils> SP_UTILS_MAP = new HashMap<>();
 
-    private SharedPreferences sp;
+    private final SharedPreferences sp;
 
     /**
      * Return the single {@link SPUtils} instance
@@ -355,7 +355,7 @@ public final class SPUtils {
      * or {@code Collections.<String>emptySet()} otherwise
      */
     public Set<String> getStringSet(@NonNull final String key) {
-        return getStringSet(key, Collections.<String>emptySet());
+        return getStringSet(key, Collections.emptySet());
     }
 
     /**

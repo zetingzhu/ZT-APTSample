@@ -131,7 +131,7 @@ public class SnackbarUtilsV2 {
     }
 
     private SnackbarUtilsV2(@Nullable WeakReference<Snackbar> snackbarWeakReference) {
-        this.snackbarWeakReference = snackbarWeakReference;
+        SnackbarUtilsV2.snackbarWeakReference = snackbarWeakReference;
     }
 
     /**
@@ -140,8 +140,8 @@ public class SnackbarUtilsV2 {
      * @return
      */
     public Snackbar getSnackbar() {
-        if (this.snackbarWeakReference != null && this.snackbarWeakReference.get() != null) {
-            return this.snackbarWeakReference.get();
+        if (snackbarWeakReference != null && snackbarWeakReference.get() != null) {
+            return snackbarWeakReference.get();
         } else {
             return null;
         }
@@ -449,7 +449,7 @@ public class SnackbarUtilsV2 {
      */
     public SnackbarUtilsV2 leftAndRightDrawable(@Nullable Drawable leftDrawable, @Nullable Drawable rightDrawable) {
         if (getSnackbar() != null) {
-            TextView message = (TextView) getSnackbar().getView().findViewById(R.id.snackbar_text);
+            TextView message = getSnackbar().getView().findViewById(R.id.snackbar_text);
             LinearLayout.LayoutParams paramsMessage = (LinearLayout.LayoutParams) message.getLayoutParams();
             paramsMessage = new LinearLayout.LayoutParams(paramsMessage.width, paramsMessage.height, 0.0f);
             message.setLayoutParams(paramsMessage);
@@ -478,7 +478,7 @@ public class SnackbarUtilsV2 {
     public SnackbarUtilsV2 messageCenter() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             if (getSnackbar() != null) {
-                TextView message = (TextView) getSnackbar().getView().findViewById(R.id.snackbar_text);
+                TextView message = getSnackbar().getView().findViewById(R.id.snackbar_text);
                 //View.setTextAlignment需要SDK>=17
                 message.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
                 message.setGravity(Gravity.CENTER);
@@ -496,7 +496,7 @@ public class SnackbarUtilsV2 {
     public SnackbarUtilsV2 messageRight() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             if (getSnackbar() != null) {
-                TextView message = (TextView) getSnackbar().getView().findViewById(R.id.snackbar_text);
+                TextView message = getSnackbar().getView().findViewById(R.id.snackbar_text);
                 //View.setTextAlignment需要SDK>=17
                 message.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
                 message.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);

@@ -15,7 +15,7 @@ import com.jjshome.mobile.datastatistics.StatisticsRequest;
  */
 public class UploadData {
 
-    private static String TAG = UploadData.class.getSimpleName();
+    private static final String TAG = UploadData.class.getSimpleName();
 
     public static void upload(IReport upload) {
         Log.e(TAG, "上报给服务器,upload=" + upload.getParams());

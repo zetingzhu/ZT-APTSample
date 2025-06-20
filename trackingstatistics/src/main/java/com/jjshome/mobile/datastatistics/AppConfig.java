@@ -62,7 +62,7 @@ public class AppConfig {
     public static class Builder {
         private AppID mAppID;
         private int mServerType;
-        private Context context;
+        private final Context context;
         private String dtoken;
 
         public Builder(Context context) {

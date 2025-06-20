@@ -51,12 +51,12 @@ public class AppTextView extends AutofitTextView implements LanguageView {
                         && textValue.contains("@")) {
                     //如果是 android:text="@string/testText"
                     //textValue会长这样 @156878785,去掉@号就是资源id
-                    textId = Integer.parseInt(textValue.substring(1, textValue.length()));
+                    textId = Integer.parseInt(textValue.substring(1));
                 }
                 String hintValue = attributeSet.getAttributeValue(ANDROIDXML, "hint");
                 if (!(hintValue == null || hintValue.length() < 2)
                         && hintValue.contains("@")) {
-                    hintId = Integer.parseInt(hintValue.substring(1, hintValue.length()));
+                    hintId = Integer.parseInt(hintValue.substring(1));
                 }
             }
         } catch (Exception e) {
